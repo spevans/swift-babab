@@ -1,0 +1,15 @@
+name: TestMacos
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: macOS-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build
+      run: swift build -c release
+    - name: Run tests
+      run: swift test -c release

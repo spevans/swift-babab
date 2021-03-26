@@ -1,0 +1,13 @@
+name: TestLinux
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Run tests
+      run: docker build . --file Dockerfile --tag swift-babab-tests:$(date +%s)
