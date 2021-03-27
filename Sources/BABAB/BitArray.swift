@@ -7,7 +7,6 @@
 //
 // BitArray<x> types. Treat UInt8/UInt16/UInt32/UInt64 as arrays of bits.
 //
-//
 
 public typealias BitArray8 = BitArray<UInt8>
 public typealias BitArray16 = BitArray<UInt16>
@@ -35,7 +34,11 @@ public struct BitArray<T: FixedWidthInteger & UnsignedInteger> : BidirectionalCo
         return i + 1
     }
 
-    public var description: String { return String(rawValue, radix: 2) }
+    public var description: String {
+        let num = String(rawValue, radix: 2)
+        let width = T.bitWidth
+        return String(repeating: "0", count: width - num.count) + num
+    }
 
 
     public init() {
@@ -104,10 +107,5 @@ public struct BitArray<T: FixedWidthInteger & UnsignedInteger> : BidirectionalCo
                 bit <<= 1
             }
         }
-    }
-
-
-    func toInt() -> Int {
-        return Int(rawValue)
     }
 }
