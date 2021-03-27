@@ -1,5 +1,12 @@
+//
+//  BitArrayTests.swift
+//  BABABTests
+//
+//  Created by Simon Evans on 27/03/2021.
+//
+
 import XCTest
-@testable import BABAB
+import BABAB
 
 final class BitArrayTests: XCTestCase {
 
