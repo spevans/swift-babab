@@ -5,8 +5,8 @@
 //  Created by Simon Evans on 27/03/2021.
 //
 
-import XCTest
 import BABAB
+import XCTest
 
 final class BitArrayTests: XCTestCase {
 
@@ -51,6 +51,6 @@ final class BitArrayTests: XCTestCase {
     }
 
     static var allTests = [
-        ("testBitArray", testBitArray),
+        ("testBitArray", testBitArray)
     ]
 }

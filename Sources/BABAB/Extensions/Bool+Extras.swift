@@ -6,7 +6,6 @@
 //  Copyright © 2021 Simon Evans. All rights reserved.
 //
 
-
 extension Bool {
     public init(_ value: Int) {
         precondition(value == 0 || value == 1)

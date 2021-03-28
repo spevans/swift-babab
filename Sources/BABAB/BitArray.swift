@@ -13,7 +13,9 @@ public typealias BitArray16 = BitArray<UInt16>
 public typealias BitArray32 = BitArray<UInt32>
 public typealias BitArray64 = BitArray<UInt64>
 
-public struct BitArray<T: FixedWidthInteger & UnsignedInteger> : BidirectionalCollection, MutableCollection, CustomStringConvertible {
+public struct BitArray<T: FixedWidthInteger & UnsignedInteger>: BidirectionalCollection, MutableCollection,
+    CustomStringConvertible
+{
 
     public typealias Index = Int
     public typealias Element = Int
@@ -24,7 +26,6 @@ public struct BitArray<T: FixedWidthInteger & UnsignedInteger> : BidirectionalCo
     public var startIndex: Self.Index { 0 }
     public var endIndex: Self.Index { rawValue.bitWidth }
     public var count: Int { rawValue.bitWidth }
-
 
     public func index(before i: Self.Index) -> Self.Index {
         return i - 1
@@ -39,7 +40,6 @@ public struct BitArray<T: FixedWidthInteger & UnsignedInteger> : BidirectionalCo
         let width = T.bitWidth
         return String(repeating: "0", count: width - num.count) + num
     }
-
 
     public init() {
         rawValue = 0
@@ -57,7 +57,6 @@ public struct BitArray<T: FixedWidthInteger & UnsignedInteger> : BidirectionalCo
         self.rawValue = rawValue
     }
 
-
     public subscript(index: Int) -> Int {
         get {
             precondition(index >= 0)
@@ -72,14 +71,13 @@ public struct BitArray<T: FixedWidthInteger & UnsignedInteger> : BidirectionalCo
             precondition(newValue == 0 || newValue == 1)
 
             let mask: T = 1 << index
-            if (newValue == 1) {
+            if newValue == 1 {
                 rawValue |= mask
             } else {
                 rawValue &= ~mask
             }
         }
     }
-
 
     public subscript(index: ClosedRange<Int>) -> T {
         get {

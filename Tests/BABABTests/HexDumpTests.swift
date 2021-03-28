@@ -5,9 +5,8 @@
 //  Created by Simon Evans on 27/03/2021.
 //
 
-import XCTest
 import BABAB
-
+import XCTest
 
 class HexDumpTests: XCTestCase {
 
@@ -34,70 +33,77 @@ class HexDumpTests: XCTestCase {
 
         XCTAssertEqual(hexDump(bytes, startAddress: UInt8(1)), "01:    30 31")
         XCTAssertEqual(hexDump(bytes, startAddress: UInt16(0x12)), "0012:       30 31")
-        XCTAssertEqual(hexDump(bytes, startAddress: UInt32(0x12345678)), "12345678:                         30 31")
+        XCTAssertEqual(hexDump(bytes, startAddress: UInt32(0x1234_5678)), "12345678:                         30 31")
 
         let expected64 = """
-        0123456789abcdef:                                              30
-        0123456789abcdf0: 31
-        """
-        XCTAssertEqual(hexDump(bytes, startAddress: UInt64(0x0123456789abcdef)), expected64)
+            0123456789abcdef:                                              30
+            0123456789abcdf0: 31
+            """
+        XCTAssertEqual(hexDump(bytes, startAddress: UInt64(0x0123_4567_89ab_cdef)), expected64)
 
     }
 
     func testShowASCII() {
         let bytes = (0...15).map { UInt8($0) }
-        XCTAssertEqual(hexDump(bytes, startAddress: UInt8(0), showASCII: true), "00: 00 01 02 03 04 05 06 07-08 09 0a 0b 0c 0d 0e 0f ................")
+        let expected0 = "00: 00 01 02 03 04 05 06 07-08 09 0a 0b 0c 0d 0e 0f ................"
+        XCTAssertEqual(hexDump(bytes, startAddress: UInt8(0), showASCII: true), expected0)
 
         let expected1 = """
-        01:    00 01 02 03 04 05 06-07 08 09 0a 0b 0c 0d 0e  ...............
-        10: 0f                                              .
-        """
+            01:    00 01 02 03 04 05 06-07 08 09 0a 0b 0c 0d 0e  ...............
+            10: 0f                                              .
+            """
         XCTAssertEqual(hexDump(bytes, startAddress: UInt8(1), showASCII: true), expected1)
 
         let expected15 = """
-        0f:                                              00                .
-        10: 01 02 03 04 05 06 07 08-09 0a 0b 0c 0d 0e 0f    ...............
-        """
+            0f:                                              00                .
+            10: 01 02 03 04 05 06 07 08-09 0a 0b 0c 0d 0e 0f    ...............
+            """
         XCTAssertEqual(hexDump(bytes, startAddress: UInt8(15), showASCII: true), expected15)
 
         let asciiBytes = (0x30..<0x40).map { UInt8($0) }
-        XCTAssertEqual(hexDump(asciiBytes, startAddress: UInt8(0), showASCII: true), "00: 30 31 32 33 34 35 36 37-38 39 3a 3b 3c 3d 3e 3f 0123456789:;<=>?")
-
+        let expected = "00: 30 31 32 33 34 35 36 37-38 39 3a 3b 3c 3d 3e 3f 0123456789:;<=>?"
+        XCTAssertEqual(hexDump(asciiBytes, startAddress: UInt8(0), showASCII: true), expected)
     }
 
     func testDumpMemory() {
         XCTAssertEqual(hexDump([0x30, 0x31]), "30 31")
-        XCTAssertEqual(hexDump([0x30, 0x31], showASCII: true), "30 31                                           01")
-        XCTAssertEqual(hexDump([0x30, 0x31], startAddress: UInt16(0xf)), "000f:                                              30\n0010: 31")
-        XCTAssertEqual(hexDump([0x30, 0x31], startAddress: UInt16(0xf)), "000f:                                              30\n0010: 31")
 
+        let expected1 = "30 31                                           01"
+        XCTAssertEqual(hexDump([0x30, 0x31], showASCII: true), expected1)
 
-        let bytes: [UInt8] = [0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x20, 0x54, 0x68, 0x65, 0x72, 0x65, 0x20, 0x57, 0x6f, 0x72, 0x6c, 0x64, 0x0a]
+        let expected2 = "000f:                                              30\n0010: 31"
+        XCTAssertEqual(hexDump([0x30, 0x31], startAddress: UInt16(0xf)), expected2)
 
-        let expected1 = """
-        48 65 6c 6c 6f 20 54 68-65 72 65 20 57 6f 72 6c
-        64 0a
-        """
-        XCTAssertEqual(hexDump(bytes), expected1)
+        let expected3 = "000f:                                              30\n0010: 31"
+        XCTAssertEqual(hexDump([0x30, 0x31], startAddress: UInt16(0xf)), expected3)
 
-        let expected2 = """
-        48 65 6c 6c 6f 20 54 68-65 72 65 20 57 6f 72 6c Hello There Worl
-        64 0a                                           d.
-        """
-        XCTAssertEqual(hexDump(bytes, showASCII: true), expected2)
-
-        let expected3 = """
-        87654321:    48 65 6c 6c 6f 20 54-68 65 72 65 20 57 6f 72
-        87654330: 6c 64 0a
-        """
-        XCTAssertEqual(hexDump(bytes, startAddress: UInt32(0x87654321)), expected3)
+        let bytes: [UInt8] = [
+            0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x20, 0x54, 0x68, 0x65, 0x72, 0x65, 0x20, 0x57, 0x6f, 0x72, 0x6c, 0x64, 0x0a,
+        ]
 
         let expected4 = """
-        87654321:    48 65 6c 6c 6f 20 54-68 65 72 65 20 57 6f 72  Hello There Wor
-        87654330: 6c 64 0a                                        ld.
-        """
-        XCTAssertEqual(hexDump(bytes, startAddress: UInt32(0x87654321), showASCII: true), expected4)
+            48 65 6c 6c 6f 20 54 68-65 72 65 20 57 6f 72 6c
+            64 0a
+            """
+        XCTAssertEqual(hexDump(bytes), expected4)
 
+        let expected5 = """
+            48 65 6c 6c 6f 20 54 68-65 72 65 20 57 6f 72 6c Hello There Worl
+            64 0a                                           d.
+            """
+        XCTAssertEqual(hexDump(bytes, showASCII: true), expected5)
+
+        let expected6 = """
+            87654321:    48 65 6c 6c 6f 20 54-68 65 72 65 20 57 6f 72
+            87654330: 6c 64 0a
+            """
+        XCTAssertEqual(hexDump(bytes, startAddress: UInt32(0x8765_4321)), expected6)
+
+        let expected7 = """
+            87654321:    48 65 6c 6c 6f 20 54-68 65 72 65 20 57 6f 72  Hello There Wor
+            87654330: 6c 64 0a                                        ld.
+            """
+        XCTAssertEqual(hexDump(bytes, startAddress: UInt32(0x8765_4321), showASCII: true), expected7)
 
         let allBytes = (0...0xff).map { UInt8($0) }
 
@@ -182,7 +188,6 @@ class HexDumpTests: XCTestCase {
         XCTAssertEqual(hexDump(bytes, startAddress: UInt8(7)), "07:                      30-31")
         XCTAssertEqual(hexDump(bytes, startAddress: UInt8(8)), "08:                         30 31")
     }
-
 
     static var allTests = [
         ("testHexNum", testHexNum),

@@ -7,11 +7,10 @@
 //
 
 #if os(Linux)
-import Glibc
+    import Glibc
 #elseif os(macOS)
-import Darwin
+    import Darwin
 #endif
-
 
 extension UnsafeRawPointer {
     public func unalignedLoad<T: FixedWidthInteger>(fromByteOffset offset: Int = 0, as type: T.Type) -> T {
@@ -21,11 +20,9 @@ extension UnsafeRawPointer {
     }
 }
 
-
 extension UnsafeMutableRawPointer {
     public func unalignedStoreBytes<T>(of value: T, toByteOffset offset: Int, as type: T.Type) {
         var _value = value
         memcpy(self.advanced(by: offset), &_value, MemoryLayout<T>.size)
     }
 }
-

@@ -19,8 +19,10 @@ public func hexNum<T: FixedWidthInteger & UnsignedInteger>(_ value: T) -> String
 
 private let bytesPerLine = 16
 
-public func hexDump<S: Sequence & Collection, A: FixedWidthInteger & UnsignedInteger>(_ buffer: S, startAddress: A, showASCII: Bool = false) -> String
-    where S.Element == UInt8 {
+public func hexDump<S: Sequence & Collection, A: FixedWidthInteger & UnsignedInteger>(
+    _ buffer: S, startAddress: A, showASCII: Bool = false
+) -> String
+where S.Element == UInt8 {
 
     guard buffer.count > 0 else { return "" }
     let offset = Int(startAddress % A(bytesPerLine))
@@ -42,13 +44,12 @@ public func hexDump<S: Sequence & Collection, A: FixedWidthInteger & UnsignedInt
         output += "\n"
         address += A(bytesPerLine)
     }
-    output.removeLast()     // Remove trailing "\n"
+    output.removeLast()  // Remove trailing "\n"
     return output
 }
 
-
 public func hexDump<S: Sequence & Collection>(_ buffer: S, showASCII: Bool = false) -> String
-    where S.Element == UInt8 {
+where S.Element == UInt8 {
 
     guard buffer.count > 0 else { return "" }
     var iterator = buffer.makeIterator()
@@ -61,13 +62,14 @@ public func hexDump<S: Sequence & Collection>(_ buffer: S, showASCII: Bool = fal
         output += "\n"
         totalBytes -= count
     }
-    output.removeLast()     // Remove trailing "\n"
+    output.removeLast()  // Remove trailing "\n"
     return output
 }
 
-
-private func dumpMemoryLine<I: IteratorProtocol>(_ buffer: inout I, offset: Int, count: Int, into line: inout String, showASCII: Bool)
-    where I.Element == UInt8 {
+private func dumpMemoryLine<I: IteratorProtocol>(
+    _ buffer: inout I, offset: Int, count: Int, into line: inout String, showASCII: Bool
+)
+where I.Element == UInt8 {
 
     precondition(1...bytesPerLine ~= count)
     var ascii = ""
@@ -76,15 +78,14 @@ private func dumpMemoryLine<I: IteratorProtocol>(_ buffer: inout I, offset: Int,
         line += String(repeating: "   ", count: offset)
     }
 
-    for position in offset..<(offset+count) {
+    for position in offset..<(offset + count) {
         guard let byte = buffer.next() else { break }
 
         line += hexNum(byte)
         // Show '-' separator between columns 8 & 9 instead of a space
         if position == 7 && count > 1 {
             line += "-"
-        }
-        else {
+        } else {
             line += " "
         }
 
@@ -98,6 +99,6 @@ private func dumpMemoryLine<I: IteratorProtocol>(_ buffer: inout I, offset: Int,
         if remaining > 0 { line += String(repeating: "   ", count: remaining) }
         line.append(ascii)
     } else {
-        line.removeLast()   // Remove trailing " "
+        line.removeLast()  // Remove trailing " "
     }
 }
