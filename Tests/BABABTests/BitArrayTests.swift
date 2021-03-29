@@ -50,7 +50,22 @@ final class BitArrayTests: XCTestCase {
         XCTAssertEqual("\(ba)", "10101010")
     }
 
+    func testSubSequence() {
+        var allBitsSet = BitArray16(UInt16.max)
+        XCTAssertEqual(allBitsSet[0..<0].rawValue, 0)
+        XCTAssertEqual(allBitsSet[0..<16].rawValue, UInt16.max)
+        XCTAssertEqual(allBitsSet[0..<8].rawValue, 0xff)
+        XCTAssertEqual(allBitsSet[8..<16].rawValue, 0xff)
+
+        allBitsSet[0..<8] = BitArray16(0x5555)
+        XCTAssertEqual(allBitsSet.rawValue, 0xff55)
+        allBitsSet[8..<16] = BitArray16(0xAA)
+        XCTAssertEqual(allBitsSet.rawValue, 0xAA55)
+    }
+
     static var allTests = [
-        ("testBitArray", testBitArray)
+        ("testBitArray", testBitArray),
+        ("testSubSequence", testSubSequence),
+
     ]
 }
