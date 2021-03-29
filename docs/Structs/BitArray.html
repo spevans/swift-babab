@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>BitArray Structure Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Struct/BitArray" class="dashAnchor"></a>
+    <a title="BitArray Structure Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">BABAB Docs</a> (98% documented)</p>
+        <p class="header-right"><a href="https://github.com/spevans/swift-babab"><img src="../img/gh.png"/>View on GitHub</a></p>
+        <p class="header-right">
+          <form role="search" action="../search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
+        </p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">BABAB Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        BitArray Structure Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/Bool.html">Bool</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Int.html">Int</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UnsafeMutableRawPointer.html">UnsafeMutableRawPointer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UnsafeRawPointer.html">UnsafeRawPointer</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:5BABAB7hexDump_9showASCIISSx_SbtSlRzs5UInt8V7ElementRtzlF">hexDump(_:showASCII:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:5BABAB7hexDump_12startAddress9showASCIISSx_q_SbtSlRzs17FixedWidthIntegerR_SUR_s5UInt8V7ElementRtzr0_lF">hexDump(_:startAddress:showASCII:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:5BABAB6hexNumySSxs17FixedWidthIntegerRzSURzlF">hexNum(_:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/BitArray.html">BitArray</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/BitmapAllocator.html">BitmapAllocator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/DoubleBitmapAllocator.html">DoubleBitmapAllocator</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5BABAB10BitArray16a">BitArray16</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5BABAB10BitArray32a">BitArray32</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5BABAB10BitArray64a">BitArray64</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5BABAB9BitArray8a">BitArray8</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5BABAB18BitmapAllocator128a">BitmapAllocator128</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5BABAB17BitmapAllocator16a">BitmapAllocator16</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5BABAB17BitmapAllocator32a">BitmapAllocator32</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5BABAB17BitmapAllocator64a">BitmapAllocator64</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5BABAB16BitmapAllocator8a">BitmapAllocator8</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>BitArray</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">BitArray</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">:</span> <span class="kt">FixedWidthInteger</span> <span class="o">&amp;</span> <span class="kt">UnsignedInteger</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">RandomAccessCollection</span><span class="p">,</span> <span class="kt">MutableCollection</span><span class="p">,</span>
+    <span class="kt">CustomStringConvertible</span></code></pre>
+
+                </div>
+              </div>
+            <p>A type that uses a fixed width, unsigned integer as storage for an array of bits. The number of bits is fixed and by default are set to zero.</p>
+<pre class="highlight swift"><code><span class="kt">Using</span> <span class="n">fixed</span> <span class="n">width</span> <span class="n">arrays</span> <span class="n">of</span> <span class="n">bits</span> <span class="n">can</span> <span class="n">be</span> <span class="n">used</span> <span class="n">to</span> <span class="n">implement</span> <span class="n">bitfield</span> <span class="n">like</span> <span class="n">data</span> <span class="n">structures</span><span class="o">.</span>
+<span class="kt">As</span> <span class="n">an</span> <span class="n">example</span><span class="p">,</span> <span class="n">consider</span> <span class="n">an</span> <span class="mi">8</span><span class="o">-</span><span class="n">bit</span> <span class="n">value</span> <span class="n">that</span> <span class="n">represents</span> <span class="n">the</span> <span class="n">following</span> <span class="n">data</span>
+
+<span class="o">+---------+---------+-------+-------+</span>
+<span class="o">|</span> <span class="nv">b7</span><span class="p">:</span><span class="mi">4</span>    <span class="o">|</span> <span class="nv">b2</span><span class="p">:</span><span class="mi">3</span>    <span class="o">|</span> <span class="n">b1</span>    <span class="o">|</span> <span class="n">b0</span>    <span class="o">|</span>
+<span class="o">|</span> <span class="kt">Value</span> <span class="mi">2</span> <span class="o">|</span> <span class="kt">Value</span> <span class="mi">1</span> <span class="o">|</span> <span class="kt">Flag2</span> <span class="o">|</span> <span class="kt">Flag1</span> <span class="o">|</span>
+<span class="o">+---------+---------+-------+-------+</span>
+
+<span class="kd">struct</span> <span class="kt">Data</span> <span class="p">{</span>
+    <span class="kd">private</span> <span class="k">var</span> <span class="nv">bits</span><span class="p">:</span> <span class="kt">BitArray8</span>
+
+    <span class="k">var</span> <span class="nv">flag1</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span>
+        <span class="k">get</span> <span class="p">{</span> <span class="kt">Bool</span><span class="p">(</span><span class="n">bits</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="p">}</span>
+        <span class="k">set</span> <span class="p">{</span> <span class="n">bits</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="kt">Int</span><span class="p">(</span><span class="n">newValue</span><span class="p">)</span> <span class="p">}</span>
+
+    <span class="k">var</span> <span class="nv">flag2</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="n">bits</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">}</span>
+
+    <span class="k">var</span> <span class="nv">value1</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span> <span class="n">bits</span><span class="p">[</span><span class="mi">2</span><span class="o">...</span><span class="mi">3</span><span class="p">]</span> <span class="p">}</span>
+
+    <span class="k">var</span> <span class="nv">value2</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span>
+        <span class="k">get</span> <span class="p">{</span> <span class="n">bits</span><span class="p">[</span><span class="mi">4</span><span class="o">...</span><span class="mi">7</span><span class="p">]</span> <span class="p">}</span>
+        <span class="k">set</span> <span class="p">{</span> <span class="n">buts</span><span class="p">[</span><span class="mi">4</span><span class="o">...</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="n">newValue</span> <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5BABAB8BitArrayV5Indexa"></a>
+                    <a name="//apple_ref/swift/Alias/Index" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5BABAB8BitArrayV5Indexa">Index</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The <code>Index</code> type for a <code>BitArray</code> is an <code>Int</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">Index</span> <span class="o">=</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5BABAB8BitArrayV7Elementa"></a>
+                    <a name="//apple_ref/swift/Alias/Element" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5BABAB8BitArrayV7Elementa">Element</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The <code>Element</code> type for a <code>BitArry</code> is an <code>Int</code> of value zero or one.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">Element</span> <span class="o">=</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5BABAB8BitArrayV11SubSequencea"></a>
+                    <a name="//apple_ref/swift/Alias/SubSequence" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5BABAB8BitArrayV11SubSequencea">SubSequence</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A sequence that represents a contiguous subrange of the collection’s elements.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">SubSequence</span> <span class="o">=</span> <span class="p">`</span><span class="nv">Self</span><span class="p">`</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5BABAB8BitArrayV8rawValuexvp"></a>
+                    <a name="//apple_ref/swift/Property/rawValue" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5BABAB8BitArrayV8rawValuexvp">rawValue</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The underlying storage.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">private(set)</span> <span class="k">var</span> <span class="nv">rawValue</span><span class="p">:</span> <span class="kt">T</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5BABAB8BitArrayV10startIndexSivp"></a>
+                    <a name="//apple_ref/swift/Property/startIndex" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5BABAB8BitArrayV10startIndexSivp">startIndex</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The position of the first element in a nonempty array. Always zero.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">startIndex</span><span class="p">:</span> <span class="p">`</span><span class="nv">Self</span><span class="p">`</span><span class="o">.</span><span class="kt"><a href="../Structs/BitArray.html#/s:5BABAB8BitArrayV5Indexa">Index</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5BABAB8BitArrayV8endIndexSivp"></a>
+                    <a name="//apple_ref/swift/Property/endIndex" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5BABAB8BitArrayV8endIndexSivp">endIndex</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The array’s “past the end” position—that is, the position one greater than the last valid subscript argument.
+This value is always equal to the <code>bitWidth</code> of the underlying storage.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">endIndex</span><span class="p">:</span> <span class="p">`</span><span class="nv">Self</span><span class="p">`</span><span class="o">.</span><span class="kt"><a href="../Structs/BitArray.html#/s:5BABAB8BitArrayV5Indexa">Index</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5BABAB8BitArrayV5countSivp"></a>
+                    <a name="//apple_ref/swift/Property/count" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5BABAB8BitArrayV5countSivp">count</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The number of elements in the array. This is fixed at the <code>bitWidth</code> of the underlying storage.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">count</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5BABAB8BitArrayV5index6beforeS2i_tF"></a>
+                    <a name="//apple_ref/swift/Method/index(before:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5BABAB8BitArrayV5index6beforeS2i_tF">index(before:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the position immediately before the given index.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">index</span><span class="p">(</span><span class="n">before</span> <span class="nv">i</span><span class="p">:</span> <span class="p">`</span><span class="nv">Self</span><span class="p">`</span><span class="o">.</span><span class="kt"><a href="../Structs/BitArray.html#/s:5BABAB8BitArrayV5Indexa">Index</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">`</span><span class="nv">Self</span><span class="p">`</span><span class="o">.</span><span class="kt"><a href="../Structs/BitArray.html#/s:5BABAB8BitArrayV5Indexa">Index</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5BABAB8BitArrayV5index5afterS2i_tF"></a>
+                    <a name="//apple_ref/swift/Method/index(after:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5BABAB8BitArrayV5index5afterS2i_tF">index(after:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Replaces the given index with its successor.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">index</span><span class="p">(</span><span class="n">after</span> <span class="nv">i</span><span class="p">:</span> <span class="p">`</span><span class="nv">Self</span><span class="p">`</span><span class="o">.</span><span class="kt"><a href="../Structs/BitArray.html#/s:5BABAB8BitArrayV5Indexa">Index</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">`</span><span class="nv">Self</span><span class="p">`</span><span class="o">.</span><span class="kt"><a href="../Structs/BitArray.html#/s:5BABAB8BitArrayV5Indexa">Index</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5BABAB8BitArrayV11descriptionSSvp"></a>
+                    <a name="//apple_ref/swift/Property/description" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5BABAB8BitArrayV11descriptionSSvp">description</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A textual representation of the array and its elements.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5BABAB8BitArrayVACyxGycfc"></a>
+                    <a name="//apple_ref/swift/Method/init()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5BABAB8BitArrayVACyxGycfc">init()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a new, empty array. All the elements are set to zero.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5BABAB8BitArrayVyACyxGSicfc"></a>
+                    <a name="//apple_ref/swift/Method/init(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5BABAB8BitArrayVyACyxGSicfc">init(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Create a new array initiialising the underlying storage to the supplied value.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">_</span> <span class="nv">rawValue</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>rawValue</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The initial value to set the storage to.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5BABAB8BitArrayVyACyxGSucfc"></a>
+                    <a name="//apple_ref/swift/Method/init(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5BABAB8BitArrayVyACyxGSucfc">init(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Create a new array initiialising the underlying storage to the supplied value.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">_</span> <span class="nv">rawValue</span><span class="p">:</span> <span class="kt">UInt</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>rawValue</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The initial value to set the storage to.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5BABAB8BitArrayVyACyxGxcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5BABAB8BitArrayVyACyxGxcfc">init(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Create a new array initiialising the underlying storage to the supplied value.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">_</span> <span class="nv">rawValue</span><span class="p">:</span> <span class="kt">T</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>rawValue</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The initial value to set the storage to.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5BABAB8BitArrayVyS2icip"></a>
+                    <a name="//apple_ref/swift/Method/subscript(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5BABAB8BitArrayVyS2icip">subscript(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Accesses the element at the specified position.</p>
+<div class="aside aside-precondition">
+    <p class="aside-title">Precondition</p>
+    The index is in the valid range of <code><a href="../Structs/BitArray.html#/s:5BABAB8BitArrayV10startIndexSivp">startIndex</a></code> upto but not including<code><a href="../Structs/BitArray.html#/s:5BABAB8BitArrayV8endIndexSivp">endIndex</a></code>.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">subscript</span><span class="p">(</span><span class="nv">index</span><span class="p">:</span> <span class="kt"><a href="../Structs/BitArray.html#/s:5BABAB8BitArrayV5Indexa">Index</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>index</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The position of the element to access. index must be greater than or equal to startIndex and less than endIndex.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The bit value of the element.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5BABAB8BitArrayVyACyxGSnySiGcip"></a>
+                    <a name="//apple_ref/swift/Method/subscript(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5BABAB8BitArrayVyACyxGSnySiGcip">subscript(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A subrange of the array&rsquo;s elements.</p>
+<pre class="highlight swift"><code><span class="kt">The</span> <span class="n">result</span> <span class="k">is</span> <span class="n">a</span> <span class="n">full</span><span class="o">-</span><span class="n">width</span> <span class="n">array</span> <span class="n">with</span> <span class="n">the</span> <span class="n">elements</span> <span class="k">in</span> <span class="n">the</span> <span class="n">given</span> <span class="n">range</span>
+<span class="k">in</span> <span class="n">the</span> <span class="n">lowest</span> <span class="n">bits</span> <span class="n">of</span> <span class="n">the</span> <span class="n">returned</span> <span class="n">array</span><span class="o">.</span>
+<span class="kt">If</span> <span class="n">the</span> <span class="n">original</span> <span class="n">array</span>
+
+<span class="k">let</span> <span class="nv">a</span> <span class="o">=</span> <span class="kt">BitArray16</span><span class="p">(</span><span class="mh">0x0A50</span><span class="p">)</span> <span class="c1">// 0000101001010000</span>
+<span class="k">let</span> <span class="nv">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">8</span><span class="o">..&lt;</span><span class="mi">16</span><span class="p">]</span>          <span class="c1">// 0000000000001010</span>
+
+</code></pre>
+<div class="aside aside-precondition">
+    <p class="aside-title">Precondition</p>
+    <code>bounds.lowerBound</code> &gt;= 0.
+
+</div><div class="aside aside-precondition">
+    <p class="aside-title">Precondition</p>
+    <code>bounds.upperBound</code>&lt;= The number of elements in the array.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">subscript</span><span class="p">(</span><span class="nv">bounds</span><span class="p">:</span> <span class="kt">Range</span><span class="o">&lt;</span><span class="kt"><a href="../Structs/BitArray.html#/s:5BABAB8BitArrayV5Indexa">Index</a></span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/BitArray.html#/s:5BABAB8BitArrayV11SubSequencea">SubSequence</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>bounds</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A range of integers. The bounds of the range must be valid indices of the array.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A new array with the selected elements.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5BABAB8BitArrayVyxSNySiGcip"></a>
+                    <a name="//apple_ref/swift/Method/subscript(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5BABAB8BitArrayVyxSNySiGcip">subscript(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The integer value representing the array&rsquo;s elements.</p>
+<pre class="highlight swift"><code><span class="kt">The</span> <span class="n">result</span> <span class="k">is</span> <span class="n">the</span> <span class="n">integer</span> <span class="n">value</span> <span class="n">of</span> <span class="n">the</span> <span class="n">selected</span> <span class="nf">elements</span> <span class="p">(</span><span class="n">bits</span><span class="p">)</span> <span class="n">of</span> <span class="n">the</span> <span class="n">array</span><span class="o">.</span>
+
+<span class="k">let</span> <span class="nv">a</span> <span class="o">=</span> <span class="kt">BitArray16</span><span class="p">(</span><span class="mh">0x0A50</span><span class="p">)</span> <span class="c1">// 0000101001010000</span>
+<span class="k">let</span> <span class="nv">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">8</span><span class="o">..&lt;</span><span class="mi">16</span><span class="p">]</span>          <span class="c1">// b = 0xA</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>                   <span class="c1">// 10</span>
+</code></pre>
+<div class="aside aside-precondition">
+    <p class="aside-title">Precondition</p>
+    <code>bounds.lowerBound</code> &gt;= 0.
+
+</div><div class="aside aside-precondition">
+    <p class="aside-title">Precondition</p>
+    <code>bounds.upperBound</code>&lt; The number of elements in the array.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">subscript</span><span class="p">(</span><span class="nv">bounds</span><span class="p">:</span> <span class="kt">ClosedRange</span><span class="o">&lt;</span><span class="kt"><a href="../Structs/BitArray.html#/s:5BABAB8BitArrayV5Indexa">Index</a></span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">T</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>bounds</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A range of integers. The bounds of the range must be valid indices of the array.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>An integer representation of the selected elements.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2021 <a class="link" href="https://github.com/spevans" target="_blank" rel="external">Simon Evans</a>. All rights reserved. (Last updated: 2021-03-29)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

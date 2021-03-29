@@ -1,0 +1,12 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/spse/src/swift-babab/Sources/BABAB/HexDump.swift",
+      "line": 63,
+      "symbol": "hexDump(_:showASCII:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/spse/src/swift-babab"
+}
