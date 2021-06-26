@@ -10,17 +10,6 @@ import XCTest
 
 class HexDumpTests: XCTestCase {
 
-    func testHexNum() {
-        XCTAssertEqual(hexNum(UInt8.min), "00")
-        XCTAssertEqual(hexNum(UInt8.max), "ff")
-        XCTAssertEqual(hexNum(UInt16.min), "0000")
-        XCTAssertEqual(hexNum(UInt16.max), "ffff")
-        XCTAssertEqual(hexNum(UInt32.min), "00000000")
-        XCTAssertEqual(hexNum(UInt32.max), "ffffffff")
-        XCTAssertEqual(hexNum(UInt64.min), "0000000000000000")
-        XCTAssertEqual(hexNum(UInt64.max), "ffffffffffffffff")
-    }
-
     func testEmptyCollections() {
         XCTAssertEqual(hexDump([]), "")
         XCTAssertEqual(hexDump([], showASCII: true), "")
@@ -190,7 +179,6 @@ class HexDumpTests: XCTestCase {
     }
 
     static var allTests = [
-        ("testHexNum", testHexNum),
         ("testEmptyCollections", testEmptyCollections),
         ("testStartAddress", testStartAddress),
         ("testShowASCII", testShowASCII),

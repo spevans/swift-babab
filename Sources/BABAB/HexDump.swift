@@ -8,15 +8,6 @@
 //  Functions for hexDumps of collections and memory buffers.
 //
 
-public func hexNum<T: FixedWidthInteger & UnsignedInteger>(_ value: T) -> String {
-    let num = String(value, radix: 16)
-    let width = T.bitWidth / 4
-    if num.count < width {
-        return String(repeating: "0", count: width - num.count) + num
-    }
-    return num
-}
-
 private let bytesPerLine = 16
 
 public func hexDump<S: Sequence & Collection, A: FixedWidthInteger & UnsignedInteger>(
@@ -29,7 +20,7 @@ where S.Element == UInt8 {
     var address = startAddress - A(offset)
     var iterator = buffer.makeIterator()
 
-    var output = "\(hexNum(startAddress)): "
+    var output = "\(startAddress.hex()): "
     let firstLineCount = min(buffer.count, bytesPerLine - offset)
     dumpMemoryLine(&iterator, offset: offset, count: firstLineCount, into: &output, showASCII: showASCII)
     var totalBytes = buffer.count - firstLineCount
@@ -37,7 +28,7 @@ where S.Element == UInt8 {
     address += A(bytesPerLine)
 
     while totalBytes > 0 {
-        output += "\(hexNum(address)): "
+        output += "\(address.hex()): "
         let count = min(totalBytes, bytesPerLine)
         dumpMemoryLine(&iterator, offset: 0, count: count, into: &output, showASCII: showASCII)
         totalBytes -= count
@@ -81,7 +72,7 @@ where I.Element == UInt8 {
     for position in offset..<(offset + count) {
         guard let byte = buffer.next() else { break }
 
-        line += hexNum(byte)
+        line += byte.hex()
         // Show '-' separator between columns 8 & 9 instead of a space
         if position == 7 && count > 1 {
             line += "-"
