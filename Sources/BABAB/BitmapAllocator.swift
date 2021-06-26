@@ -8,8 +8,10 @@
 //  Simple allocators that use a bitmap in a fixed width integer to store free/allocated blocks.
 //
 
-/// A type that allows for allocating and deallocating entries using an unsigned fixed width integer to hold the allocated entries.
-/// The entries are in the range of 0 to 2^(bitmap width). Thus an allocator with a `UInt8` bitmap will return entries in the range 0 - 255.
+/// A type that allows for allocating and deallocating entries using an unsigned fixed width integer to hold the
+/// allocated entries.
+/// The entries are in the range of 0 to 2^(bitmap width). Thus an allocator with a `UInt8` bitmap will return entries
+/// in the range 0 - 255.
 protocol BitmapAllocatorProtocol {
     /// Returns the total number of entries that can be allocated.
     var entryCount: Int { get }
@@ -34,25 +36,15 @@ public typealias BitmapAllocator64 = BitmapAllocator<UInt64>
 /// A bitmap allocatior with capacity for 128 items.
 public typealias BitmapAllocator128 = DoubleBitmapAllocator<UInt64>
 
-// Value as binary with '0' padding.
-private func binNum<T: FixedWidthInteger & UnsignedInteger>(_ value: T) -> String {
-    let num = String(value, radix: 2)
-    let width = T.bitWidth
-    if num.count < width {
-        return String(repeating: "0", count: width - num.count) + num
-    }
-    return num
-}
-
-/// An allocator that uses an `UnsignedInteger` to store the allocated entries allowing upto `.bitWidth` entries to be allocated.
+/// An allocator that uses an `UnsignedInteger` to store the allocated entries allowing upto `.bitWidth` entries to be
+/// allocated.
 public struct BitmapAllocator<BitmapType: FixedWidthInteger & UnsignedInteger>:
-    BitmapAllocatorProtocol, CustomStringConvertible
-{
+    BitmapAllocatorProtocol, CustomStringConvertible {
     private var bitmap: BitmapType  // Bits 0: Allocated, 1: Free
 
     /// A textual description of the allocator.
     /// - returns: A zero padding binary representation of the bitmap.
-    public var description: String { binNum(bitmap) }
+    public var description: String { bitmap.binary() }
     /// - returns: The total number of entries that can be allocated.
     public var entryCount: Int { BitmapType.bitWidth }
     /// - returns: The number of entries that have not been allocated.
@@ -85,16 +77,16 @@ public struct BitmapAllocator<BitmapType: FixedWidthInteger & UnsignedInteger>:
     }
 }
 
-/// An allocator that uses 2 `UnsignedInteger`s to store the allocated entries allowing upto 2x `.bitWidth` entries to be allocated.
+/// An allocator that uses 2 `UnsignedInteger`s to store the allocated entries allowing upto 2x `.bitWidth` entries to
+/// be allocated.
 public struct DoubleBitmapAllocator<BitmapType: FixedWidthInteger & UnsignedInteger>:
-    BitmapAllocatorProtocol, CustomStringConvertible
-{
+    BitmapAllocatorProtocol, CustomStringConvertible {
     private var bitmap0: BitmapType  // Bits 0: Allocated, 1: Free
     private var bitmap1: BitmapType
 
     /// A textual description of the allocator.
     /// - returns: A zero padding binary representation of the bitmap.
-    public var description: String { "\(binNum(bitmap1))-\(binNum(bitmap0))" }
+    public var description: String { "\(bitmap1.binary())-\(bitmap0.binary())" }
     /// - returns: The total number of entries that can be allocated.
     public var entryCount: Int { 2 * BitmapType.bitWidth }
     /// - returns: The number of entries that have not been allocated.
