@@ -9,6 +9,7 @@ import XCTest
             testCase(BinaryIntegerExtrasTests.allTests),
             testCase(BoolExtrasTests.allTests),
             testCase(FixedWidthIntegerExtrasTests.allTests),
+            testCase(NumberSetTests.allTests),
         ]
     }
 #endif
