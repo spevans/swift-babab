@@ -7,6 +7,7 @@ import XCTest
             testCase(HexDumpTests.allTests),
             testCase(BitmapAllocatorTests.allTests),
             testCase(BinaryIntegerExtrasTests.allTests),
+            testCase(BoolExtrasTests.allTests),
         ]
     }
 #endif
