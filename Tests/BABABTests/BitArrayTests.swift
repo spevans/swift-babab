@@ -17,28 +17,28 @@ final class BitArrayTests: XCTestCase {
         XCTAssertEqual(ba.count, 8)
 
         ba = BitArray(0)
-        XCTAssertEqual(ba[0], 0)
-        XCTAssertEqual(ba[7], 0)
+        XCTAssertFalse(ba[0])
+        XCTAssertFalse(ba[7])
         XCTAssertEqual(ba.rawValue, 0)
-        XCTAssertEqual(ba.description, "00000000")
+        XCTAssertEqual(ba.description, "0000_0000")
 
-        ba[0] = 1
+        ba[0] = true
         ba[7] = ba[0]
-        XCTAssertEqual(ba[0], 1)
-        XCTAssertEqual(ba[7], 1)
+        XCTAssertTrue(ba[0])
+        XCTAssertTrue(ba[7])
         XCTAssertEqual(ba.rawValue, 129)
-        XCTAssertEqual("\(ba)", "10000001")
+        XCTAssertEqual("\(ba)", "1000_0001")
 
         ba = BitArray8(UInt8(0))
         var flag = false
         for (idx, _) in ba.enumerated() {
-            ba[idx] = Int(flag)
+            ba[idx] = flag
             flag.toggle()
         }
 
         XCTAssertEqual(ba.rawValue, 0xAA)
         for (idx, element) in ba.enumerated() {
-            ba[idx] = 1 - element
+            ba[idx] = !element
         }
         XCTAssertEqual(ba.rawValue, 0x55)
         ba[0...3] = 0
@@ -47,7 +47,7 @@ final class BitArrayTests: XCTestCase {
         XCTAssertEqual(ba.rawValue, 0xA0)
         ba[0...3] = ba[4...7]
         XCTAssertEqual(ba.rawValue, 0xAA)
-        XCTAssertEqual("\(ba)", "10101010")
+        XCTAssertEqual("\(ba)", "1010_1010")
     }
 
     func testSubSequence() {
@@ -66,6 +66,5 @@ final class BitArrayTests: XCTestCase {
     static var allTests = [
         ("testBitArray", testBitArray),
         ("testSubSequence", testSubSequence),
-
     ]
 }

@@ -17,7 +17,8 @@ public typealias BitArray32 = BitArray<UInt32>
 /// A `BitArray` with 64 elements.
 public typealias BitArray64 = BitArray<UInt64>
 
-/// A type that uses a fixed width, unsigned integer as storage for an array of bits. The number of bits is fixed and by default are set to zero.
+/// A type that uses a fixed width, unsigned integer as storage for an array of bits. The number of bits is fixed and by
+/// default are set to zero.
 /// ```
 /// Using fixed width arrays of bits can be used to implement bitfield like data structures.
 /// As an example, consider an 8-bit value that represents the following data
@@ -31,8 +32,8 @@ public typealias BitArray64 = BitArray<UInt64>
 ///     private var bits: BitArray8
 ///
 ///     var flag1: Bool {
-///         get { Bool(bits[0]) }
-///         set { bits[0] = Int(newValue) }
+///         get { bits[0] }
+///         set { bits[0] = newValue }
 ///
 ///     var flag2: Bool { bits[1] }
 ///
@@ -45,12 +46,11 @@ public typealias BitArray64 = BitArray<UInt64>
 /// }
 /// ```
 public struct BitArray<T: FixedWidthInteger & UnsignedInteger>: RandomAccessCollection, MutableCollection,
-    CustomStringConvertible
-{
+    CustomStringConvertible {
     /// The `Index` type for a `BitArray` is an `Int`.
     public typealias Index = Int
-    /// The `Element` type for a `BitArry` is an `Int` of value zero or one.
-    public typealias Element = Int
+    /// The `Element` type for a `BitArry` is a `Bool` of value `true` or `false`.
+    public typealias Element = Bool
     /// A sequence that represents a contiguous subrange of the collection’s elements.
     public typealias SubSequence = Self
     /// The underlying storage.
@@ -63,19 +63,20 @@ public struct BitArray<T: FixedWidthInteger & UnsignedInteger>: RandomAccessColl
     public var endIndex: Self.Index { rawValue.bitWidth }
     /// The number of elements in the array. This is fixed at the `bitWidth` of the underlying storage.
     public var count: Int { rawValue.bitWidth }
+
     /// Returns the position immediately before the given index.
-    public func index(before i: Self.Index) -> Self.Index {
-        return i - 1
+    public func index(before index: Self.Index) -> Self.Index {
+        return index - 1
     }
+
     /// Replaces the given index with its successor.
-    public func index(after i: Self.Index) -> Self.Index {
-        return i + 1
+    public func index(after index: Self.Index) -> Self.Index {
+        return index + 1
     }
+
     /// A textual representation of the array and its elements.
     public var description: String {
-        let num = String(rawValue, radix: 2)
-        let width = T.bitWidth
-        return String(repeating: "0", count: width - num.count) + num
+        rawValue.binary(separators: true)
     }
 
     /// Creates a new, empty array. All the elements are set to zero.
@@ -83,43 +84,30 @@ public struct BitArray<T: FixedWidthInteger & UnsignedInteger>: RandomAccessColl
         rawValue = 0
     }
 
-    /// Create a new array initiialising the underlying storage to the supplied value.
-    /// - parameter rawValue: The initial value to set the storage to.
-    public init(_ rawValue: Int) {
-        self.rawValue = T(rawValue)
-    }
-
-    /// Create a new array initiialising the underlying storage to the supplied value.
-    /// - parameter rawValue: The initial value to set the storage to.
-    public init(_ rawValue: UInt) {
-        self.rawValue = T(rawValue)
-    }
-
-    /// Create a new array initiialising the underlying storage to the supplied value.
+    /// Create a new array initialising the underlying storage to the supplied value.
     /// - parameter rawValue: The initial value to set the storage to.
     public init(_ rawValue: T) {
         self.rawValue = rawValue
     }
 
     /// Accesses the element at the specified position.
-    /// - parameter index:The position of the element to access. index must be greater than or equal to startIndex and less than endIndex.
+    /// - parameter index: The position of the element to access. `index` must be greater than or equal to startIndex and less than endIndex.
     /// - returns: The bit value of the element.
-    /// - precondition: The index is in the valid range of `startIndex` upto but not including`endIndex`.
-    public subscript(index: Index) -> Int {
+    /// - precondition: The index is in the valid range of `startIndex` up to but not including`endIndex`.
+    public subscript(index: Index) -> Element {
         get {
-            precondition(index >= 0)
-            precondition(index < T.bitWidth)
+            precondition(index >= startIndex)
+            precondition(index < endIndex)
 
-            return (rawValue & (T(1) << index) == 0) ? 0 : 1
+            return (rawValue & (T(1) << index) == 0) ? false : true
         }
 
         set(newValue) {
-            precondition(index >= 0)
-            precondition(index < T.bitWidth)
-            precondition(newValue == 0 || newValue == 1)
+            precondition(index >= startIndex)
+            precondition(index < endIndex)
 
             let mask: T = 1 << index
-            if newValue == 1 {
+            if newValue {
                 rawValue |= mask
             } else {
                 rawValue &= ~mask
@@ -151,8 +139,9 @@ public struct BitArray<T: FixedWidthInteger & UnsignedInteger>: RandomAccessColl
     /// - precondition: `bounds.upperBound`<= The number of elements in the array.
     public subscript(bounds: Range<Index>) -> SubSequence {
         get {
-            precondition(bounds.lowerBound >= 0)
-            precondition(bounds.upperBound <= T.bitWidth)
+            precondition(bounds.lowerBound >= startIndex)
+            precondition(bounds.upperBound <= endIndex)
+
             let bitCount = bounds.upperBound - bounds.lowerBound
             guard bitCount > 0 else { return Self() }
             let mask = maskFrom(bitCount: bitCount)
@@ -160,12 +149,13 @@ public struct BitArray<T: FixedWidthInteger & UnsignedInteger>: RandomAccessColl
             return Self(newRawValue)
         }
         set {
-            precondition(bounds.lowerBound >= 0)
-            precondition(bounds.upperBound <= T.bitWidth)
+            precondition(bounds.lowerBound >= startIndex)
+            precondition(bounds.upperBound <= endIndex)
+
             let bitCount = bounds.upperBound - bounds.lowerBound
             guard bitCount > 0 else { return }
-            let mask = maskFrom(bitCount: bitCount)
 
+            let mask = maskFrom(bitCount: bitCount)
             let value = (newValue.rawValue & mask) << bounds.lowerBound
             self.rawValue &= ~(mask << bounds.lowerBound)
             self.rawValue |= value
@@ -186,15 +176,16 @@ public struct BitArray<T: FixedWidthInteger & UnsignedInteger>: RandomAccessColl
     /// - precondition: `bounds.upperBound`< The number of elements in the array.
     public subscript(bounds: ClosedRange<Index>) -> T {
         get {
-            precondition(bounds.lowerBound >= 0)
-            precondition(bounds.upperBound < T.bitWidth)
+            precondition(bounds.lowerBound >= startIndex)
+            precondition(bounds.upperBound < endIndex)
+
             let bitCount = 1 + bounds.upperBound - bounds.lowerBound
             let mask = maskFrom(bitCount: bitCount)
             return (self.rawValue >> bounds.lowerBound) & mask
         }
         set {
-            precondition(bounds.lowerBound >= 0)
-            precondition(bounds.upperBound < T.bitWidth)
+            precondition(bounds.lowerBound >= startIndex)
+            precondition(bounds.upperBound < endIndex)
 
             let bitCount = 1 + bounds.upperBound - bounds.lowerBound
             guard bitCount > 0 else { return }
