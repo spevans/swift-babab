@@ -10,6 +10,7 @@ import XCTest
             testCase(BoolExtrasTests.allTests),
             testCase(FixedWidthIntegerExtrasTests.allTests),
             testCase(NumberSetTests.allTests),
+            testCase(ByteArrayTests.allTests),
         ]
     }
 #endif
