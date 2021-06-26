@@ -8,6 +8,7 @@ import XCTest
             testCase(BitmapAllocatorTests.allTests),
             testCase(BinaryIntegerExtrasTests.allTests),
             testCase(BoolExtrasTests.allTests),
+            testCase(FixedWidthIntegerExtrasTests.allTests),
         ]
     }
 #endif

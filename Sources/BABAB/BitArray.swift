@@ -115,14 +115,6 @@ public struct BitArray<T: FixedWidthInteger & UnsignedInteger>: RandomAccessColl
         }
     }
 
-    private func maskFrom(bitCount: Int) -> T {
-        if bitCount == T.bitWidth {
-            return T.max
-        } else {
-            return T(1 << T(bitCount)) - T(1)
-        }
-    }
-
     /// A subrange of the array's elements.
     /// ```
     /// The result is a full-width array with the elements in the given range
@@ -144,7 +136,7 @@ public struct BitArray<T: FixedWidthInteger & UnsignedInteger>: RandomAccessColl
 
             let bitCount = bounds.upperBound - bounds.lowerBound
             guard bitCount > 0 else { return Self() }
-            let mask = maskFrom(bitCount: bitCount)
+            let mask = rawValue.maskFrom(bitCount: bitCount)
             let newRawValue = (self.rawValue >> bounds.lowerBound) & mask
             return Self(newRawValue)
         }
@@ -155,7 +147,7 @@ public struct BitArray<T: FixedWidthInteger & UnsignedInteger>: RandomAccessColl
             let bitCount = bounds.upperBound - bounds.lowerBound
             guard bitCount > 0 else { return }
 
-            let mask = maskFrom(bitCount: bitCount)
+            let mask = rawValue.maskFrom(bitCount: bitCount)
             let value = (newValue.rawValue & mask) << bounds.lowerBound
             self.rawValue &= ~(mask << bounds.lowerBound)
             self.rawValue |= value
@@ -180,7 +172,7 @@ public struct BitArray<T: FixedWidthInteger & UnsignedInteger>: RandomAccessColl
             precondition(bounds.upperBound < endIndex)
 
             let bitCount = 1 + bounds.upperBound - bounds.lowerBound
-            let mask = maskFrom(bitCount: bitCount)
+            let mask = rawValue.maskFrom(bitCount: bitCount)
             return (self.rawValue >> bounds.lowerBound) & mask
         }
         set {
@@ -190,7 +182,7 @@ public struct BitArray<T: FixedWidthInteger & UnsignedInteger>: RandomAccessColl
             let bitCount = 1 + bounds.upperBound - bounds.lowerBound
             guard bitCount > 0 else { return }
 
-            let mask = maskFrom(bitCount: bitCount)
+            let mask = rawValue.maskFrom(bitCount: bitCount)
             let value = (newValue & mask) << bounds.lowerBound
             self.rawValue &= ~(mask << bounds.lowerBound)
             self.rawValue |= value
