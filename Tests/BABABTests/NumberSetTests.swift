@@ -19,22 +19,22 @@ class NumberSetTests: XCTestCase {
     let setAll = NumberSet<UInt16>(rawValue: UInt16.max)
 
     func testInit() {
-        var ns = NumberSet<UInt8>()
-        XCTAssertTrue(ns.isEmpty)
-        XCTAssertEqual(ns.description, "[]")
+        var testSet = NumberSet<UInt8>()
+        XCTAssertTrue(testSet.isEmpty)
+        XCTAssertEqual(testSet.description, "[]")
 
-        XCTAssertFalse(ns.contains(0))
-        XCTAssertFalse(ns.contains(7))
-        ns.insert(0)
-        ns.insert(3)
-        ns.insert(6)
-        XCTAssertTrue(ns.contains(0))
-        XCTAssertFalse(ns.contains(1))
-        XCTAssertEqual(ns.rawValue, 0b0100_1001)
-        XCTAssertEqual(ns.description, "[0, 3, 6]")
+        XCTAssertFalse(testSet.contains(0))
+        XCTAssertFalse(testSet.contains(7))
+        testSet.insert(0)
+        testSet.insert(3)
+        testSet.insert(6)
+        XCTAssertTrue(testSet.contains(0))
+        XCTAssertFalse(testSet.contains(1))
+        XCTAssertEqual(testSet.rawValue, 0b0100_1001)
+        XCTAssertEqual(testSet.description, "[0, 3, 6]")
 
-        ns = NumberSet<UInt8>(rawValue: 0b1010_1010)
-        XCTAssertEqual(ns.description, "[1, 3, 5, 7]")
+        testSet = NumberSet<UInt8>(rawValue: 0b1010_1010)
+        XCTAssertEqual(testSet.description, "[1, 3, 5, 7]")
 
         XCTAssertEqual(NumberSet<UInt32>([1, 3, 5, 7]).rawValue, 0b1010_1010)
     }
@@ -75,40 +75,59 @@ class NumberSetTests: XCTestCase {
     }
 
     func testUpdates() {
-        var ns = NumberSet<UInt>()
+        var testSet = NumberSet<UInt>()
 
         // Insert '0', check before and after insert.
-        XCTAssertFalse(ns.contains(0))
-        var (inserted, afterInsert) = ns.insert(0)
+        XCTAssertFalse(testSet.contains(0))
+        var (inserted, afterInsert) = testSet.insert(0)
         XCTAssertTrue(inserted)
-        XCTAssertTrue(ns.contains(0))
+        XCTAssertTrue(testSet.contains(0))
         XCTAssertEqual(afterInsert, 0)
-        XCTAssertFalse(ns.isEmpty)
+        XCTAssertFalse(testSet.isEmpty)
 
         // Insert '0', check it was already inserted.
-        (inserted, afterInsert) = ns.insert(0)
+        (inserted, afterInsert) = testSet.insert(0)
         XCTAssertFalse(inserted)
         XCTAssertEqual(afterInsert, 0)
-        XCTAssertTrue(ns.contains(0))
+        XCTAssertTrue(testSet.contains(0))
 
         // Check removal of non-existant member returns nil.
-        XCTAssertFalse(ns.contains(1))
-        XCTAssertNil(ns.remove(1))
+        XCTAssertFalse(testSet.contains(1))
+        XCTAssertNil(testSet.remove(1))
 
         // Check removal of existing member returns the member.
-        XCTAssertEqual(ns.remove(0), 0)
-        XCTAssertFalse(ns.contains(0))
-        XCTAssertTrue(ns.isEmpty)
+        XCTAssertEqual(testSet.remove(0), 0)
+        XCTAssertFalse(testSet.contains(0))
+        XCTAssertTrue(testSet.isEmpty)
 
         // Check removal of already removed member returns nil.
-        XCTAssertNil(ns.remove(0))
+        XCTAssertNil(testSet.remove(0))
 
-        XCTAssertNil(ns.update(with: 3))
-        XCTAssertEqual(ns.update(with: 3), 3)
+        XCTAssertNil(testSet.update(with: 3))
+        XCTAssertEqual(testSet.update(with: 3), 3)
+    }
 
-        var cns = Set<Character>()
-        XCTAssertNil(cns.update(with: Character("A")))
-        XCTAssertEqual(cns.update(with: Character("A")), Character("A"))
+    func testRemove() {
+        do {
+            var testSet = NumberSet<UInt16>([1, 2, 3])
+            XCTAssertFalse(testSet.isEmpty)
+            testSet.removeAll()
+            XCTAssertTrue(testSet.isEmpty)
+        }
+
+        do {
+            var testSet = NumberSet<UInt32>([4, 9, 12, 3, 7, 5, 8, 15, 16])
+            XCTAssertEqual(testSet.removeFirst(), 3)
+            XCTAssertEqual(testSet.removeFirst(), 4)
+            XCTAssertEqual(testSet.removeFirst(), 5)
+            XCTAssertEqual(testSet, [7, 8, 9, 12, 15, 16])
+            XCTAssertEqual(testSet.remove(at: 2), 9)
+            XCTAssertEqual(testSet.remove(at: 0), 7)
+            XCTAssertEqual(testSet.remove(at: 0), 8)
+            XCTAssertEqual(testSet.remove(at: 1), 15)
+            XCTAssertEqual(testSet.remove(at: 1), 16)
+            XCTAssertEqual(testSet.removeFirst(), 12)
+        }
     }
 
     func testUnion() {
@@ -140,6 +159,22 @@ class NumberSetTests: XCTestCase {
             var set2Copy = self.set2
             set2Copy.formUnion(self.set3)
             XCTAssertEqual(set2Copy, [3, 4, 5, 7, 8, 9])
+        }
+
+        do {
+            var set2Copy = self.set2
+            set2Copy.formUnion([])
+            XCTAssertEqual(set2Copy, set2)
+            set2Copy.formUnion([7, 8, 9])
+            XCTAssertEqual(set2Copy, [3, 4, 5, 7, 8, 9])
+        }
+
+        do {
+            var set0Copy = self.set0
+            set0Copy.formUnion([])
+            XCTAssertEqual(set0Copy, [])
+            set0Copy.formUnion([0, 7, 15])
+            XCTAssertEqual(set0Copy, [0, 7, 15])
         }
     }
 
@@ -258,6 +293,21 @@ class NumberSetTests: XCTestCase {
         }
     }
 
+    func testNumberSetIterator() {
+        do {
+            var iterator = NumberSetIterator(rawValue: UInt(0))
+            XCTAssertNil(iterator.next())
+            XCTAssertNil(iterator.next())
+        }
+
+        do {
+            var iterator = NumberSetIterator(rawValue: UInt64(1 << 50) | UInt64(1))
+            XCTAssertEqual(iterator.next(), 0)
+            XCTAssertEqual(iterator.next(), 50)
+            XCTAssertNil(iterator.next())
+        }
+    }
+
     static var allTests = [
         ("testInit", testInit),
         ("testProperties", testProperties),
@@ -268,5 +318,6 @@ class NumberSetTests: XCTestCase {
         ("testIntersection", testIntersection),
         ("testSubtract", testSubtract),
         ("testSymmetricDifference", testSymmetricDifference),
+        ("testNumberSetIterator", testNumberSetIterator),
     ]
 }
