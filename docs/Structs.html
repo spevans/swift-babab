@@ -17,7 +17,7 @@
     <a title="Structures  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">BABAB Docs</a> (98% documented)</p>
+        <p><a href="index.html">BABAB Docs</a> (80% documented)</p>
         <p class="header-right"><a href="https://github.com/spevans/swift-babab"><img src="img/gh.png"/>View on GitHub</a></p>
         <p class="header-right">
           <form role="search" action="search.json">
@@ -40,10 +40,13 @@
             <a href="Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="Extensions/BinaryInteger.html">BinaryInteger</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Extensions/Bool.html">Bool</a>
               </li>
               <li class="nav-group-task">
-                <a href="Extensions/Int.html">Int</a>
+                <a href="Extensions/FixedWidthInteger.html">FixedWidthInteger</a>
               </li>
               <li class="nav-group-task">
                 <a href="Extensions/UnsafeMutableRawPointer.html">UnsafeMutableRawPointer</a>
@@ -62,9 +65,6 @@
               <li class="nav-group-task">
                 <a href="Functions.html#/s:5BABAB7hexDump_12startAddress9showASCIISSx_q_SbtSlRzs17FixedWidthIntegerR_SUR_s5UInt8V7ElementRtzr0_lF">hexDump(_:startAddress:showASCII:)</a>
               </li>
-              <li class="nav-group-task">
-                <a href="Functions.html#/s:5BABAB6hexNumySSxs17FixedWidthIntegerRzSURzlF">hexNum(_:)</a>
-              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -77,7 +77,19 @@
                 <a href="Structs/BitmapAllocator.html">BitmapAllocator</a>
               </li>
               <li class="nav-group-task">
+                <a href="Structs/ByteArray.html">ByteArray</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/ByteArrayIterator.html">ByteArrayIterator</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Structs/DoubleBitmapAllocator.html">DoubleBitmapAllocator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/NumberSet.html">NumberSet</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/NumberSetIterator.html">NumberSetIterator</a>
               </li>
             </ul>
           </li>
@@ -138,7 +150,8 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A type that uses a fixed width, unsigned integer as storage for an array of bits. The number of bits is fixed and by default are set to zero.</p>
+                        <p>A type that uses a fixed width, unsigned integer as storage for an array of bits. The number of bits is fixed and by
+default are set to zero.</p>
 <pre class="highlight swift"><code><span class="kt">Using</span> <span class="n">fixed</span> <span class="n">width</span> <span class="n">arrays</span> <span class="n">of</span> <span class="n">bits</span> <span class="n">can</span> <span class="n">be</span> <span class="n">used</span> <span class="n">to</span> <span class="n">implement</span> <span class="n">bitfield</span> <span class="n">like</span> <span class="n">data</span> <span class="n">structures</span><span class="o">.</span>
 <span class="kt">As</span> <span class="n">an</span> <span class="n">example</span><span class="p">,</span> <span class="n">consider</span> <span class="n">an</span> <span class="mi">8</span><span class="o">-</span><span class="n">bit</span> <span class="n">value</span> <span class="n">that</span> <span class="n">represents</span> <span class="n">the</span> <span class="n">following</span> <span class="n">data</span>
 
@@ -151,8 +164,8 @@
     <span class="kd">private</span> <span class="k">var</span> <span class="nv">bits</span><span class="p">:</span> <span class="kt">BitArray8</span>
 
     <span class="k">var</span> <span class="nv">flag1</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span>
-        <span class="k">get</span> <span class="p">{</span> <span class="kt">Bool</span><span class="p">(</span><span class="n">bits</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="p">}</span>
-        <span class="k">set</span> <span class="p">{</span> <span class="n">bits</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="kt">Int</span><span class="p">(</span><span class="n">newValue</span><span class="p">)</span> <span class="p">}</span>
+        <span class="k">get</span> <span class="p">{</span> <span class="n">bits</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">}</span>
+        <span class="k">set</span> <span class="p">{</span> <span class="n">bits</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">newValue</span> <span class="p">}</span>
 
     <span class="k">var</span> <span class="nv">flag2</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="n">bits</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">}</span>
 
@@ -192,7 +205,8 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>An allocator that uses an <code>UnsignedInteger</code> to store the allocated entries allowing upto <code>.bitWidth</code> entries to be allocated.</p>
+                        <p>An allocator that uses an <code>UnsignedInteger</code> to store the allocated entries allowing upto <code>.bitWidth</code> entries to be
+allocated.</p>
 
                         <a href="Structs/BitmapAllocator.html" class="slightly-smaller">See more</a>
                       </div>
@@ -221,7 +235,8 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>An allocator that uses 2 <code>UnsignedInteger</code>s to store the allocated entries allowing upto 2x <code>.bitWidth</code> entries to be allocated.</p>
+                        <p>An allocator that uses 2 <code>UnsignedInteger</code>s to store the allocated entries allowing upto 2x <code>.bitWidth</code> entries to
+be allocated.</p>
 
                         <a href="Structs/DoubleBitmapAllocator.html" class="slightly-smaller">See more</a>
                       </div>
@@ -237,12 +252,136 @@
                     </section>
                   </div>
                 </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5BABAB9ByteArrayV"></a>
+                    <a name="//apple_ref/swift/Struct/ByteArray" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5BABAB9ByteArrayV">ByteArray</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="Structs/ByteArray.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">ByteArray</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">:</span> <span class="kt">FixedWidthInteger</span> <span class="o">&amp;</span> <span class="kt">UnsignedInteger</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">RandomAccessCollection</span><span class="p">,</span> <span class="kt">MutableCollection</span><span class="p">,</span>
+                                                                 <span class="kt">RangeReplaceableCollection</span><span class="p">,</span> <span class="kt">BidirectionalCollection</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">ByteArray</span><span class="p">:</span> <span class="kt">CustomStringConvertible</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">ByteArray</span><span class="p">:</span> <span class="kt">CustomDebugStringConvertible</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">ByteArray</span><span class="p">:</span> <span class="kt">Sequence</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5BABAB17ByteArrayIteratorV"></a>
+                    <a name="//apple_ref/swift/Struct/ByteArrayIterator" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5BABAB17ByteArrayIteratorV">ByteArrayIterator</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="Structs/ByteArrayIterator.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">ByteArrayIterator</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt">IteratorProtocol</span> <span class="k">where</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt">FixedWidthInteger</span><span class="p">,</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt">UnsignedInteger</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5BABAB9NumberSetV"></a>
+                    <a name="//apple_ref/swift/Struct/NumberSet" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5BABAB9NumberSetV">NumberSet</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><code>NumberSet</code> uses a specified unsigned <code>FixedWidthInteger</code> as the storage for a Set containing the numbers
+0&hellip;<code>bitWidth</code>. eg a <code>UInt8</code> can contain the numbers <code>0...7</code>, a <code>UInt64</code> can store<code>0...63</code>.
+The storage uses a bit per number where bit[<code>x</code>] is used to store <code>x</code>. This gives an ordering
+of the set from lowest to highest.
+The <code>rawValue</code> property represents the underlying storage and can be easiy interpreted.</p>
+<pre class="highlight swift"><code><span class="n">rawValue</span> <span class="o">=</span> <span class="mb">0b1001_0001</span>  <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+</code></pre>
+
+                        <a href="Structs/NumberSet.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">NumberSet</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt">SetAlgebra</span> <span class="k">where</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt">FixedWidthInteger</span><span class="p">,</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt">UnsignedInteger</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">NumberSet</span><span class="p">:</span> <span class="kt">Sequence</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">NumberSet</span><span class="p">:</span> <span class="kt">CustomStringConvertible</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5BABAB17NumberSetIteratorV"></a>
+                    <a name="//apple_ref/swift/Struct/NumberSetIterator" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5BABAB17NumberSetIteratorV">NumberSetIterator</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An <code>Iterator</code> that return the elements of a <code><a href="Structs/NumberSet.html">NumberSet</a></code>.</p>
+
+                        <a href="Structs/NumberSetIterator.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">NumberSetIterator</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt">IteratorProtocol</span> <span class="k">where</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt">FixedWidthInteger</span><span class="p">,</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt">UnsignedInteger</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
               </ul>
             </div>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2021 <a class="link" href="https://github.com/spevans" target="_blank" rel="external">Simon Evans</a>. All rights reserved. (Last updated: 2021-03-29)</p>
+          <p>&copy; 2021 <a class="link" href="https://github.com/spevans" target="_blank" rel="external">Simon Evans</a>. All rights reserved. (Last updated: 2021-07-03)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>UnsafeRawPointer Extension Reference</title>
+    <title>ByteArrayIterator Structure Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -13,8 +13,8 @@
     <script src="../js/jazzy.search.js" defer></script>
   </head>
   <body>
-    <a name="//apple_ref/swift/Extension/UnsafeRawPointer" class="dashAnchor"></a>
-    <a title="UnsafeRawPointer Extension Reference"></a>
+    <a name="//apple_ref/swift/Struct/ByteArrayIterator" class="dashAnchor"></a>
+    <a title="ByteArrayIterator Structure Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">BABAB Docs</a> (80% documented)</p>
@@ -30,7 +30,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">BABAB Reference</a>
         <img id="carat" src="../img/carat.png" />
-        UnsafeRawPointer Extension Reference
+        ByteArrayIterator Structure Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -130,15 +130,16 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>UnsafeRawPointer</h1>
+            <h1>ByteArrayIterator</h1>
               <div class="declaration">
                 <div class="language">
                   
-                  <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">UnsafeRawPointer</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">ByteArrayIterator</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt">IteratorProtocol</span> <span class="k">where</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt">FixedWidthInteger</span><span class="p">,</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt">UnsignedInteger</span></code></pre>
 
                 </div>
               </div>
-            
+            <p>Undocumented</p>
+
           </section>
           <section class="section task-group-section">
             <div class="task-group">
@@ -146,9 +147,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:SV5BABABE13unalignedLoad14fromByteOffset2asxSi_xmts17FixedWidthIntegerRzlF"></a>
-                    <a name="//apple_ref/swift/Method/unalignedLoad(fromByteOffset:as:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:SV5BABABE13unalignedLoad14fromByteOffset2asxSi_xmts17FixedWidthIntegerRzlF">unalignedLoad(fromByteOffset:<wbr>as:<wbr>)</a>
+                    <a name="/s:St7ElementQa"></a>
+                    <a name="//apple_ref/swift/Alias/Element" class="dashAnchor"></a>
+                    <a class="token" href="#/s:St7ElementQa">Element</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -156,56 +157,68 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Returns a new instance of the given type, constructed from the raw memory at the specified offset.
-The type to be loaded must be a trivial type.</p>
-<pre class="highlight swift"><code><span class="kt">The</span> <span class="n">memory</span> <span class="n">at</span> <span class="n">this</span> <span class="n">pointer</span> <span class="n">plus</span> <span class="n">offset</span> <span class="n">does</span> <span class="n">not</span> <span class="n">need</span> <span class="n">to</span> <span class="n">be</span> <span class="n">properly</span> <span class="n">aligned</span> <span class="k">for</span> <span class="n">accessing</span> <span class="kt">T</span><span class="o">.</span>
-<span class="kt">It</span> <span class="n">must</span> <span class="n">be</span> <span class="n">initialized</span> <span class="n">to</span> <span class="kt">T</span> <span class="n">or</span> <span class="n">another</span> <span class="n">type</span> <span class="n">that</span> <span class="k">is</span> <span class="n">layout</span> <span class="n">compatible</span> <span class="n">with</span> <span class="kt">T</span><span class="o">.</span>
-<span class="kt">The</span> <span class="n">returned</span> <span class="n">instance</span> <span class="k">is</span> <span class="n">unassociated</span>  <span class="n">with</span> <span class="n">the</span> <span class="n">value</span> <span class="k">in</span> <span class="n">the</span> <span class="n">memory</span> <span class="n">referenced</span> <span class="n">by</span> <span class="n">this</span> <span class="n">pointer</span><span class="o">.</span>
-</code></pre>
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">Element</span> <span class="o">=</span> <span class="kt">UInt8</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5BABAB17ByteArrayIteratorV5arrayACyxGAA0bC0VyxG_tcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(array:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5BABAB17ByteArrayIteratorV5arrayACyxGAA0bC0VyxG_tcfc">init(array:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">unalignedLoad</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">fromByteOffset</span> <span class="nv">offset</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="k">as</span> <span class="nv">type</span><span class="p">:</span> <span class="kt">T</span><span class="o">.</span><span class="k">Type</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">T</span> <span class="k">where</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt">FixedWidthInteger</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">array</span><span class="p">:</span> <span class="kt"><a href="../Structs/ByteArray.html">ByteArray</a></span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>offset</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The offset from this pointer, in bytes. <code>offset</code>. The default is zero.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>type</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The type of the instance to create.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:St4next7ElementQzSgyF"></a>
+                    <a name="//apple_ref/swift/Method/next()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:St4next7ElementQzSgyF">next()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
                       </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>A new instance of type T, read from the raw bytes at offset.</p>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">next</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/ByteArrayIterator.html#/s:St7ElementQa">Element</a></span><span class="p">?</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>

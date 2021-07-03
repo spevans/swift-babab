@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>BinaryInteger Extension Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Extension/BinaryInteger" class="dashAnchor"></a>
+    <a title="BinaryInteger Extension Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">BABAB Docs</a> (80% documented)</p>
+        <p class="header-right"><a href="https://github.com/spevans/swift-babab"><img src="../img/gh.png"/>View on GitHub</a></p>
+        <p class="header-right">
+          <form role="search" action="../search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
+        </p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">BABAB Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        BinaryInteger Extension Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/BinaryInteger.html">BinaryInteger</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Bool.html">Bool</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/FixedWidthInteger.html">FixedWidthInteger</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UnsafeMutableRawPointer.html">UnsafeMutableRawPointer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UnsafeRawPointer.html">UnsafeRawPointer</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:5BABAB7hexDump_9showASCIISSx_SbtSlRzs5UInt8V7ElementRtzlF">hexDump(_:showASCII:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:5BABAB7hexDump_12startAddress9showASCIISSx_q_SbtSlRzs17FixedWidthIntegerR_SUR_s5UInt8V7ElementRtzr0_lF">hexDump(_:startAddress:showASCII:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/BitArray.html">BitArray</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/BitmapAllocator.html">BitmapAllocator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ByteArray.html">ByteArray</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ByteArrayIterator.html">ByteArrayIterator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/DoubleBitmapAllocator.html">DoubleBitmapAllocator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/NumberSet.html">NumberSet</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/NumberSetIterator.html">NumberSetIterator</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5BABAB10BitArray16a">BitArray16</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5BABAB10BitArray32a">BitArray32</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5BABAB10BitArray64a">BitArray64</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5BABAB9BitArray8a">BitArray8</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5BABAB18BitmapAllocator128a">BitmapAllocator128</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5BABAB17BitmapAllocator16a">BitmapAllocator16</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5BABAB17BitmapAllocator32a">BitmapAllocator32</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5BABAB17BitmapAllocator64a">BitmapAllocator64</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5BABAB16BitmapAllocator8a">BitmapAllocator8</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>BinaryInteger</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">BinaryInteger</span></code></pre>
+
+                </div>
+              </div>
+            
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:Sz5BABABEyxSbcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:Sz5BABABEyxSbcfc">init(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a new Integer value from the given Boolean.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">_</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>value</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A <code>Bool</code> used to initialise the value.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:Sz5BABABE6binary10separatorsSSSb_tF"></a>
+                    <a name="//apple_ref/swift/Method/binary(separators:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:Sz5BABABE6binary10separatorsSSSb_tF">binary(separators:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns a <code>String</code> of the binary representation zero padded to the width of the value.</p>
+
+<p>The value passed is converted to its <code>String</code> representation using base-16
+and then zero padded upto the width of the parameter if necessary. A <code>UInt8</code>
+will be padded to 8 characters, a <code>UInt64</code> will be padded upto 64 characters.</p>
+<pre class="highlight swift"><code>  <span class="kt">UInt8</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="nf">binary</span><span class="p">()</span>         <span class="c1">// '00000001'</span>
+  <span class="kt">UInt8</span><span class="p">(</span><span class="mh">0x12</span><span class="p">)</span><span class="o">.</span><span class="nf">binary</span><span class="p">()</span>      <span class="c1">// '00010011'</span>
+  <span class="kt">UInt16</span><span class="p">(</span><span class="mh">0x1234</span><span class="p">)</span><span class="o">.</span><span class="nf">binary</span><span class="p">()</span>   <span class="c1">// '0001001000110100'</span>
+</code></pre>
+
+<p>The <code>separator</code> flag determines if a <code>_</code> should be added between every 4 digits.</p>
+<pre class="highlight swift"><code>  <span class="kt">UInt8</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="nf">binary</span><span class="p">(</span><span class="nv">separator</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span>          <span class="c1">// '0000_0001'</span>
+  <span class="kt">UInt16</span><span class="p">(</span><span class="mh">0x1234</span><span class="p">)</span><span class="o">.</span><span class="nf">binary</span><span class="p">(</span><span class="nv">separator</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span>    <span class="c1">// '0001_0010_0011_0100'</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">binary</span><span class="p">(</span><span class="nv">separators</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>value</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The numeric value to convert.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>separators</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p><code>Boolean</code> flag to control  <code>_</code> added between every 4 digits. The default is <code>false</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The zero padded value as a <code>String</code>.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:Sz5BABABE5octal10separatorsSSSb_tF"></a>
+                    <a name="//apple_ref/swift/Method/octal(separators:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:Sz5BABABE5octal10separatorsSSSb_tF">octal(separators:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns a <code>String</code> of the octal representation zero padded to the width of the value.</p>
+
+<p>The value passed is converted to its <code>String</code> representation using base-8
+and then zero padded upto the width of the parameter if necessary. A <code>UInt8</code>
+will be padded to 3 characters, a <code>UInt64</code> will be padded upto 22 characters.</p>
+<pre class="highlight swift"><code>  <span class="kt">UInt8</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="nf">octal</span><span class="p">()</span>          <span class="c1">// '00000001'</span>
+  <span class="kt">UInt8</span><span class="p">(</span><span class="mh">0x12</span><span class="p">)</span><span class="o">.</span><span class="nf">octal</span><span class="p">()</span>       <span class="c1">// '00010011'</span>
+  <span class="kt">UInt16</span><span class="p">(</span><span class="mh">0x1234</span><span class="p">)</span><span class="o">.</span><span class="nf">octal</span><span class="p">()</span>    <span class="c1">// '0001001000110100'</span>
+</code></pre>
+
+<p>The <code>separator</code> flag determines if a <code>_</code> should be added between every 4 digits.</p>
+<pre class="highlight swift"><code>  <span class="kt">UInt8</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="nf">octal</span><span class="p">(</span><span class="nv">separator</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span>          <span class="c1">// '0000_0001'</span>
+  <span class="kt">UInt16</span><span class="p">(</span><span class="mh">0x1234</span><span class="p">)</span><span class="o">.</span><span class="nf">octal</span><span class="p">(</span><span class="nv">separator</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span>    <span class="c1">// '0001_0010_0011_0100'</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">octal</span><span class="p">(</span><span class="nv">separators</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>value</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The numeric value to convert.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>separators</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p><code>Boolean</code> flag to control  <code>_</code> added between every 4 digits. The default is <code>false</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The zero padded value as a <code>String</code>.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:Sz5BABABE3hex10separatorsSSSb_tF"></a>
+                    <a name="//apple_ref/swift/Method/hex(separators:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:Sz5BABABE3hex10separatorsSSSb_tF">hex(separators:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns a <code>String</code> of the hexadecimal representation zero padded to the width of the value.</p>
+
+<p>The value passed is converted to its <code>String</code> representation using base-16
+and then zero padded upto the width of the parameter if necessary. A <code>UInt8</code>
+will be padded to 2 characters, a <code>UInt64</code> will be padded upto 16 characters.</p>
+<pre class="highlight swift"><code>  <span class="kt">UInt8</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="nf">hex</span><span class="p">()</span>          <span class="c1">// '01'</span>
+  <span class="kt">UInt8</span><span class="p">(</span><span class="mh">0x12</span><span class="p">)</span><span class="o">.</span><span class="nf">hex</span><span class="p">()</span>       <span class="c1">// '12'</span>
+  <span class="kt">UInt32</span><span class="p">(</span><span class="mh">0x1234</span><span class="p">)</span><span class="o">.</span><span class="nf">hex</span><span class="p">()</span>    <span class="c1">// '00001234'</span>
+</code></pre>
+
+<p>The <code>separator</code> flag determines if a <code>_</code> should be added between every 4 digits.</p>
+<pre class="highlight swift"><code>  <span class="kt">UInt8</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="nf">hex</span><span class="p">(</span><span class="nv">separator</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span>         <span class="c1">// '01'</span>
+  <span class="kt">UInt32</span><span class="p">(</span><span class="mh">0x1234</span><span class="p">)</span><span class="o">.</span><span class="nf">hex</span><span class="p">(</span><span class="nv">separator</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span>   <span class="c1">// '0000_1234'</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">hex</span><span class="p">(</span><span class="nv">separators</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>value</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The numeric value to convert.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>separators</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p><code>Boolean</code> flag to control  <code>_</code> added between every 4 digits. The default is <code>false</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The zero padded value as a <code>String</code>.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2021 <a class="link" href="https://github.com/spevans" target="_blank" rel="external">Simon Evans</a>. All rights reserved. (Last updated: 2021-07-03)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

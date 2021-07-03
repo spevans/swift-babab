@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ByteArray Structure Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Struct/ByteArray" class="dashAnchor"></a>
+    <a title="ByteArray Structure Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">BABAB Docs</a> (80% documented)</p>
+        <p class="header-right"><a href="https://github.com/spevans/swift-babab"><img src="../img/gh.png"/>View on GitHub</a></p>
+        <p class="header-right">
+          <form role="search" action="../search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
+        </p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">BABAB Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        ByteArray Structure Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/BinaryInteger.html">BinaryInteger</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Bool.html">Bool</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/FixedWidthInteger.html">FixedWidthInteger</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UnsafeMutableRawPointer.html">UnsafeMutableRawPointer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UnsafeRawPointer.html">UnsafeRawPointer</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:5BABAB7hexDump_9showASCIISSx_SbtSlRzs5UInt8V7ElementRtzlF">hexDump(_:showASCII:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:5BABAB7hexDump_12startAddress9showASCIISSx_q_SbtSlRzs17FixedWidthIntegerR_SUR_s5UInt8V7ElementRtzr0_lF">hexDump(_:startAddress:showASCII:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/BitArray.html">BitArray</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/BitmapAllocator.html">BitmapAllocator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ByteArray.html">ByteArray</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ByteArrayIterator.html">ByteArrayIterator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/DoubleBitmapAllocator.html">DoubleBitmapAllocator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/NumberSet.html">NumberSet</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/NumberSetIterator.html">NumberSetIterator</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5BABAB10BitArray16a">BitArray16</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5BABAB10BitArray32a">BitArray32</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5BABAB10BitArray64a">BitArray64</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5BABAB9BitArray8a">BitArray8</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5BABAB18BitmapAllocator128a">BitmapAllocator128</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5BABAB17BitmapAllocator16a">BitmapAllocator16</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5BABAB17BitmapAllocator32a">BitmapAllocator32</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5BABAB17BitmapAllocator64a">BitmapAllocator64</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5BABAB16BitmapAllocator8a">BitmapAllocator8</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>ByteArray</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">ByteArray</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">:</span> <span class="kt">FixedWidthInteger</span> <span class="o">&amp;</span> <span class="kt">UnsignedInteger</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">RandomAccessCollection</span><span class="p">,</span> <span class="kt">MutableCollection</span><span class="p">,</span>
+                                                                 <span class="kt">RangeReplaceableCollection</span><span class="p">,</span> <span class="kt">BidirectionalCollection</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">ByteArray</span><span class="p">:</span> <span class="kt">CustomStringConvertible</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">ByteArray</span><span class="p">:</span> <span class="kt">CustomDebugStringConvertible</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">ByteArray</span><span class="p">:</span> <span class="kt">Sequence</span></code></pre>
+
+                </div>
+              </div>
+            <p>Undocumented</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:Sl5IndexQa"></a>
+                    <a name="//apple_ref/swift/Alias/Index" class="dashAnchor"></a>
+                    <a class="token" href="#/s:Sl5IndexQa">Index</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">Index</span> <span class="o">=</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ST7ElementQa"></a>
+                    <a name="//apple_ref/swift/Alias/Element" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ST7ElementQa">Element</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">Element</span> <span class="o">=</span> <span class="kt">UInt8</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:Sl11SubSequenceQa"></a>
+                    <a name="//apple_ref/swift/Alias/SubSequence" class="dashAnchor"></a>
+                    <a class="token" href="#/s:Sl11SubSequenceQa">SubSequence</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">SubSequence</span> <span class="o">=</span> <span class="p">`</span><span class="nv">Self</span><span class="p">`</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5BABAB9ByteArrayV8rawValuexvp"></a>
+                    <a name="//apple_ref/swift/Property/rawValue" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5BABAB9ByteArrayV8rawValuexvp">rawValue</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private(set)</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">rawValue</span><span class="p">:</span> <span class="kt">T</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5BABAB9ByteArrayV10startIndexSivp"></a>
+                    <a name="//apple_ref/swift/Property/startIndex" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5BABAB9ByteArrayV10startIndexSivp">startIndex</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The position of the first element in a nonempty array. Always zero.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">startIndex</span><span class="p">:</span> <span class="kt"><a href="../Structs/ByteArray.html#/s:Sl5IndexQa">Index</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5BABAB9ByteArrayV8endIndexSivp"></a>
+                    <a name="//apple_ref/swift/Property/endIndex" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5BABAB9ByteArrayV8endIndexSivp">endIndex</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The array’s “past the end” position—that is, the position one greater than the last valid subscript argument.
+This value is always equal to the <code>bitWidth</code> of the underlying storage.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">endIndex</span><span class="p">:</span> <span class="kt"><a href="../Structs/ByteArray.html#/s:Sl5IndexQa">Index</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5BABAB9ByteArrayV5countSivp"></a>
+                    <a name="//apple_ref/swift/Property/count" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5BABAB9ByteArrayV5countSivp">count</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The number of elements in the array. This is fixed at the <code>bitWidth</code> of the underlying storage.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">count</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5BABAB9ByteArrayV8capacitySivp"></a>
+                    <a name="//apple_ref/swift/Property/capacity" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5BABAB9ByteArrayV8capacitySivp">capacity</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">capacity</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5BABAB9ByteArrayV5index6beforeS2i_tF"></a>
+                    <a name="//apple_ref/swift/Method/index(before:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5BABAB9ByteArrayV5index6beforeS2i_tF">index(before:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the position immediately before the given index.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">index</span><span class="p">(</span><span class="n">before</span> <span class="nv">index</span><span class="p">:</span> <span class="kt"><a href="../Structs/ByteArray.html#/s:Sl5IndexQa">Index</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/ByteArray.html#/s:Sl5IndexQa">Index</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5BABAB9ByteArrayV5index5afterS2i_tF"></a>
+                    <a name="//apple_ref/swift/Method/index(after:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5BABAB9ByteArrayV5index5afterS2i_tF">index(after:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Replaces the given index with its successor.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">index</span><span class="p">(</span><span class="n">after</span> <span class="nv">index</span><span class="p">:</span> <span class="kt"><a href="../Structs/ByteArray.html#/s:Sl5IndexQa">Index</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/ByteArray.html#/s:Sl5IndexQa">Index</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5BABAB9ByteArrayV2eeoiySbACyxG_AEtFZ"></a>
+                    <a name="//apple_ref/swift/Method/==(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5BABAB9ByteArrayV2eeoiySbACyxG_AEtFZ">==(_:<wbr>_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="o">==</span> <span class="p">(</span><span class="nv">lhs</span><span class="p">:</span> <span class="p">`</span><span class="nv">Self</span><span class="p">`</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">rhs</span><span class="p">:</span> <span class="p">`</span><span class="nv">Self</span><span class="p">`</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5BABAB9ByteArrayV2neoiySbACyxG_AEtFZ"></a>
+                    <a name="//apple_ref/swift/Method/!=(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5BABAB9ByteArrayV2neoiySbACyxG_AEtFZ">!=(_:<wbr>_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="o">!=</span> <span class="p">(</span><span class="nv">lhs</span><span class="p">:</span> <span class="p">`</span><span class="nv">Self</span><span class="p">`</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">rhs</span><span class="p">:</span> <span class="p">`</span><span class="nv">Self</span><span class="p">`</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5BABAB9ByteArrayVACyxGycfc"></a>
+                    <a name="//apple_ref/swift/Method/init()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5BABAB9ByteArrayVACyxGycfc">init()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a new, empty array. All the elements are set to zero.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:Smyxqd__cSTRd__7ElementQyd__AARtzlufc"></a>
+                    <a name="//apple_ref/swift/Method/init(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:Smyxqd__cSTRd__7ElementQyd__AARtzlufc">init(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">init</span><span class="o">&lt;</span><span class="kt">S</span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">sequence</span><span class="p">:</span> <span class="kt">S</span><span class="p">)</span> <span class="k">where</span> <span class="kt">S</span> <span class="p">:</span> <span class="kt">Sequence</span><span class="p">,</span> <span class="kt">S</span><span class="o">.</span><span class="kt"><a href="../Structs/ByteArray.html#/s:ST7ElementQa">Element</a></span> <span class="o">==</span> <span class="kt">ByteArray</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;.</span><span class="kt"><a href="../Structs/ByteArray.html#/s:ST7ElementQa">Element</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5BABAB9ByteArrayV8rawValueACyxGx_tcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(rawValue:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5BABAB9ByteArrayV8rawValueACyxGx_tcfc">init(rawValue:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@inline</span><span class="p">(</span><span class="n">__always</span><span class="p">)</span>
+<span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">rawValue</span><span class="p">:</span> <span class="kt">T</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:Sm9repeating5countx7ElementQz_Sitcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(repeating:count:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:Sm9repeating5countx7ElementQz_Sitcfc">init(repeating:<wbr>count:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">repeating</span><span class="p">:</span> <span class="kt"><a href="../Structs/ByteArray.html#/s:ST7ElementQa">Element</a></span><span class="p">,</span> <span class="nv">count</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:Sm6appendyy7ElementQznF"></a>
+                    <a name="//apple_ref/swift/Method/append(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:Sm6appendyy7ElementQznF">append(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">append</span><span class="p">(</span><span class="n">_</span> <span class="nv">newElement</span><span class="p">:</span> <span class="kt"><a href="../Structs/ByteArray.html#/s:ST7ElementQa">Element</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5BABAB9ByteArrayV8popFirsts5UInt8VSgyF"></a>
+                    <a name="//apple_ref/swift/Method/popFirst()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5BABAB9ByteArrayV8popFirsts5UInt8VSgyF">popFirst()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">popFirst</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/ByteArray.html#/s:ST7ElementQa">Element</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5BABAB9ByteArrayV7popLasts5UInt8VSgyF"></a>
+                    <a name="//apple_ref/swift/Method/popLast()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5BABAB9ByteArrayV7popLasts5UInt8VSgyF">popLast()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">popLast</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/ByteArray.html#/s:ST7ElementQa">Element</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:Sm15reserveCapacityyySiF"></a>
+                    <a name="//apple_ref/swift/Method/reserveCapacity(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:Sm15reserveCapacityyySiF">reserveCapacity(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">reserveCapacity</span><span class="p">(</span><span class="n">_</span> <span class="nv">capacity</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5BABAB9ByteArrayVys5UInt8VSicip"></a>
+                    <a name="//apple_ref/swift/Method/subscript(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5BABAB9ByteArrayVys5UInt8VSicip">subscript(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Accesses the element at the specified position.</p>
+<div class="aside aside-precondition">
+    <p class="aside-title">Precondition</p>
+    The index is in the valid range of <code><a href="../Structs/ByteArray.html#/s:5BABAB9ByteArrayV10startIndexSivp">startIndex</a></code> upto but not including<code><a href="../Structs/ByteArray.html#/s:5BABAB9ByteArrayV8endIndexSivp">endIndex</a></code>.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">subscript</span><span class="p">(</span><span class="nv">index</span><span class="p">:</span> <span class="kt"><a href="../Structs/ByteArray.html#/s:Sl5IndexQa">Index</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/ByteArray.html#/s:ST7ElementQa">Element</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>index</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The position of the element to access. index must be greater than or equal to startIndex and
+less than endIndex.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The bit value of the element.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5BABAB9ByteArrayV9removeAllyyF"></a>
+                    <a name="//apple_ref/swift/Method/removeAll()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5BABAB9ByteArrayV9removeAllyyF">removeAll()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">removeAll</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:Sm9removeAll15keepingCapacityySb_tF"></a>
+                    <a name="//apple_ref/swift/Method/removeAll(keepingCapacity:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:Sm9removeAll15keepingCapacityySb_tF">removeAll(keepingCapacity:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">removeAll</span><span class="p">(</span><span class="n">keepingCapacity</span> <span class="nv">keepCapacity</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:Sm11removeFirst7ElementQzyF"></a>
+                    <a name="//apple_ref/swift/Method/removeFirst()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:Sm11removeFirst7ElementQzyF">removeFirst()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">public</span> <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">removeFirst</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">UInt8</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:Sm11removeFirstyySiF"></a>
+                    <a name="//apple_ref/swift/Method/removeFirst(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:Sm11removeFirstyySiF">removeFirst(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">removeFirst</span><span class="p">(</span><span class="n">_</span> <span class="nv">elements</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5BABAB9ByteArrayV10removeLasts5UInt8VyF"></a>
+                    <a name="//apple_ref/swift/Method/removeLast()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5BABAB9ByteArrayV10removeLasts5UInt8VyF">removeLast()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">public</span> <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">removeLast</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/ByteArray.html#/s:ST7ElementQa">Element</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5BABAB9ByteArrayV10removeLastyySiF"></a>
+                    <a name="//apple_ref/swift/Method/removeLast(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5BABAB9ByteArrayV10removeLastyySiF">removeLast(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">removeLast</span><span class="p">(</span><span class="n">_</span> <span class="nv">elements</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:Sm6insert_2aty7ElementQzn_5IndexQztF"></a>
+                    <a name="//apple_ref/swift/Method/insert(_:at:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:Sm6insert_2aty7ElementQzn_5IndexQztF">insert(_:<wbr>at:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">insert</span><span class="p">(</span><span class="n">_</span> <span class="nv">newElement</span><span class="p">:</span> <span class="kt"><a href="../Structs/ByteArray.html#/s:ST7ElementQa">Element</a></span><span class="p">,</span> <span class="n">at</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:Sm6remove2at7ElementQz5IndexQz_tF"></a>
+                    <a name="//apple_ref/swift/Method/remove(at:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:Sm6remove2at7ElementQz5IndexQz_tF">remove(at:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">public</span> <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">remove</span><span class="p">(</span><span class="n">at</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/ByteArray.html#/s:ST7ElementQa">Element</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:s23CustomStringConvertibleP11descriptionSSvp"></a>
+                    <a name="//apple_ref/swift/Property/description" class="dashAnchor"></a>
+                    <a class="token" href="#/s:s23CustomStringConvertibleP11descriptionSSvp">description</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:s28CustomDebugStringConvertibleP16debugDescriptionSSvp"></a>
+                    <a name="//apple_ref/swift/Property/debugDescription" class="dashAnchor"></a>
+                    <a class="token" href="#/s:s28CustomDebugStringConvertibleP16debugDescriptionSSvp">debugDescription</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">debugDescription</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:Sl12makeIterator0B0QzyF"></a>
+                    <a name="//apple_ref/swift/Method/makeIterator()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:Sl12makeIterator0B0QzyF">makeIterator()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">makeIterator</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/ByteArrayIterator.html">ByteArrayIterator</a></span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2021 <a class="link" href="https://github.com/spevans" target="_blank" rel="external">Simon Evans</a>. All rights reserved. (Last updated: 2021-07-03)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

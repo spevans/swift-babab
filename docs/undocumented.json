@@ -1,8 +1,204 @@
 {
   "warnings": [
     {
+      "file": "/Users/spse/src/swift-babab/Sources/BABAB/ByteArray.swift",
+      "line": 11,
+      "symbol": "ByteArray",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/spse/src/swift-babab/Sources/BABAB/ByteArray.swift",
+      "line": 18,
+      "symbol": "ByteArray.rawValue",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/spse/src/swift-babab/Sources/BABAB/ByteArray.swift",
+      "line": 28,
+      "symbol": "ByteArray.capacity",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/spse/src/swift-babab/Sources/BABAB/ByteArray.swift",
+      "line": 38,
+      "symbol": "ByteArray.==(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/spse/src/swift-babab/Sources/BABAB/ByteArray.swift",
+      "line": 39,
+      "symbol": "ByteArray.!=(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/spse/src/swift-babab/Sources/BABAB/ByteArray.swift",
+      "line": 59,
+      "symbol": "ByteArray.init(rawValue:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/spse/src/swift-babab/Sources/BABAB/ByteArray.swift",
+      "line": 82,
+      "symbol": "ByteArray.popFirst()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/spse/src/swift-babab/Sources/BABAB/ByteArray.swift",
+      "line": 91,
+      "symbol": "ByteArray.popLast()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/spse/src/swift-babab/Sources/BABAB/ByteArray.swift",
+      "line": 129,
+      "symbol": "ByteArray.removeAll()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/spse/src/swift-babab/Sources/BABAB/ByteArray.swift",
+      "line": 153,
+      "symbol": "ByteArray.removeLast()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/spse/src/swift-babab/Sources/BABAB/ByteArray.swift",
+      "line": 158,
+      "symbol": "ByteArray.removeLast(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/spse/src/swift-babab/Sources/BABAB/ByteArray.swift",
+      "line": 213,
+      "symbol": "ByteArray",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/spse/src/swift-babab/Sources/BABAB/ByteArray.swift",
+      "line": 219,
+      "symbol": "ByteArray",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/spse/src/swift-babab/Sources/BABAB/ByteArray.swift",
+      "line": 223,
+      "symbol": "ByteArray",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/spse/src/swift-babab/Sources/BABAB/ByteArray.swift",
+      "line": 231,
+      "symbol": "ByteArrayIterator",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/spse/src/swift-babab/Sources/BABAB/ByteArray.swift",
+      "line": 235,
+      "symbol": "ByteArrayIterator.init(array:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/spse/src/swift-babab/Sources/BABAB/Extensions/FixedWidthInteger+Extras.swift",
+      "line": 11,
+      "symbol": "FixedWidthInteger.bit(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/spse/src/swift-babab/Sources/BABAB/Extensions/FixedWidthInteger+Extras.swift",
+      "line": 17,
+      "symbol": "FixedWidthInteger.bit(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/spse/src/swift-babab/Sources/BABAB/Extensions/FixedWidthInteger+Extras.swift",
+      "line": 28,
+      "symbol": "FixedWidthInteger.lowestBitSet",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/spse/src/swift-babab/Sources/BABAB/Extensions/FixedWidthInteger+Extras.swift",
+      "line": 34,
+      "symbol": "FixedWidthInteger.highestBitSet",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/spse/src/swift-babab/Sources/BABAB/Extensions/FixedWidthInteger+Extras.swift",
+      "line": 41,
+      "symbol": "FixedWidthInteger.clearLowestBitSet()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/spse/src/swift-babab/Sources/BABAB/Extensions/FixedWidthInteger+Extras.swift",
+      "line": 49,
+      "symbol": "FixedWidthInteger.clearHighestBitSet()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/spse/src/swift-babab/Sources/BABAB/Extensions/FixedWidthInteger+Extras.swift",
+      "line": 55,
+      "symbol": "FixedWidthInteger.init(littleEndianBytes:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/spse/src/swift-babab/Sources/BABAB/Extensions/FixedWidthInteger+Extras.swift",
+      "line": 68,
+      "symbol": "FixedWidthInteger.init(bigEndianBytes:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/spse/src/swift-babab/Sources/BABAB/Extensions/FixedWidthInteger+Extras.swift",
+      "line": 82,
+      "symbol": "FixedWidthInteger.maskFrom(bitCount:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/spse/src/swift-babab/Sources/BABAB/Extensions/FixedWidthInteger+Extras.swift",
+      "line": 92,
+      "symbol": "FixedWidthInteger.init(bcd:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/spse/src/swift-babab/Sources/BABAB/Extensions/FixedWidthInteger+Extras.swift",
+      "line": 107,
+      "symbol": "FixedWidthInteger.bcdValue",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/spse/src/swift-babab/Sources/BABAB/HexDump.swift",
-      "line": 63,
+      "line": 13,
+      "symbol": "hexDump(_:startAddress:showASCII:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/spse/src/swift-babab/Sources/BABAB/HexDump.swift",
+      "line": 42,
       "symbol": "hexDump(_:showASCII:)",
       "symbol_kind": "source.lang.swift.decl.function.free",
       "warning": "undocumented"
