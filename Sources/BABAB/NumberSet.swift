@@ -7,10 +7,10 @@
 //
 
 /// `NumberSet` uses a specified unsigned `FixedWidthInteger` as the storage for a Set containing the numbers
-/// 0...`bitWidth`. eg a `UInt8` can contain the numbers `0...7`, a `UInt64` can store`0...63`.
+/// 0...`bitWidth`. eg a `UInt8` can contain the numbers `0...7`, a `UInt64` can store `0...63`.
 /// The storage uses a bit per number where bit[`x`] is used to store `x`. This gives an ordering
 /// of the set from lowest to highest.
-/// The `rawValue` property represents the underlying storage and can be easiy interpreted.
+/// The `rawValue` property represents the underlying storage and can be easily interpreted.
 /// ```
 /// rawValue = 0b1001_0001  [0, 4, 7]
 /// ```

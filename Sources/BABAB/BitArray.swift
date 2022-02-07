@@ -91,7 +91,8 @@ public struct BitArray<T: FixedWidthInteger & UnsignedInteger>: RandomAccessColl
     }
 
     /// Accesses the element at the specified position.
-    /// - parameter index: The position of the element to access. `index` must be greater than or equal to startIndex and less than endIndex.
+    /// - parameter index: The position of the element to access. `index` must be greater than or equal to startIndex
+    ///   and less than endIndex.
     /// - returns: The bit value of the element.
     /// - precondition: The index is in the valid range of `startIndex` up to but not including`endIndex`.
     public subscript(index: Index) -> Element {

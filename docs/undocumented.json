@@ -9,105 +9,126 @@
     },
     {
       "file": "/Users/spse/src/swift-babab/Sources/BABAB/ByteArray.swift",
-      "line": 18,
+      "line": 12,
       "symbol": "ByteArray.rawValue",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/spse/src/swift-babab/Sources/BABAB/ByteArray.swift",
-      "line": 28,
+      "line": 13,
       "symbol": "ByteArray.capacity",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/spse/src/swift-babab/Sources/BABAB/ByteArray.swift",
-      "line": 38,
-      "symbol": "ByteArray.==(_:_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/spse/src/swift-babab/Sources/BABAB/ByteArray.swift",
-      "line": 39,
-      "symbol": "ByteArray.!=(_:_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/spse/src/swift-babab/Sources/BABAB/ByteArray.swift",
-      "line": 59,
+      "line": 22,
       "symbol": "ByteArray.init(rawValue:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/spse/src/swift-babab/Sources/BABAB/ByteArray.swift",
-      "line": 82,
+      "line": 27,
+      "symbol": "ByteArray",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/spse/src/swift-babab/Sources/BABAB/ByteArray.swift",
+      "line": 36,
+      "symbol": "ByteArray",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/spse/src/swift-babab/Sources/BABAB/ByteArray.swift",
+      "line": 76,
       "symbol": "ByteArray.popFirst()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/spse/src/swift-babab/Sources/BABAB/ByteArray.swift",
-      "line": 91,
+      "line": 98,
+      "symbol": "ByteArray",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/spse/src/swift-babab/Sources/BABAB/ByteArray.swift",
+      "line": 104,
       "symbol": "ByteArray.popLast()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/spse/src/swift-babab/Sources/BABAB/ByteArray.swift",
-      "line": 129,
+      "line": 113,
+      "symbol": "ByteArray",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/spse/src/swift-babab/Sources/BABAB/ByteArray.swift",
+      "line": 117,
+      "symbol": "ByteArray",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/spse/src/swift-babab/Sources/BABAB/ByteArray.swift",
+      "line": 212,
       "symbol": "ByteArray.removeAll()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/spse/src/swift-babab/Sources/BABAB/ByteArray.swift",
-      "line": 153,
+      "line": 236,
       "symbol": "ByteArray.removeLast()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/spse/src/swift-babab/Sources/BABAB/ByteArray.swift",
-      "line": 158,
+      "line": 241,
       "symbol": "ByteArray.removeLast(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/spse/src/swift-babab/Sources/BABAB/ByteArray.swift",
-      "line": 213,
+      "line": 267,
       "symbol": "ByteArray",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/spse/src/swift-babab/Sources/BABAB/ByteArray.swift",
-      "line": 219,
+      "line": 271,
       "symbol": "ByteArray",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/spse/src/swift-babab/Sources/BABAB/ByteArray.swift",
-      "line": 223,
+      "line": 277,
       "symbol": "ByteArray",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/spse/src/swift-babab/Sources/BABAB/ByteArray.swift",
-      "line": 231,
+      "line": 281,
       "symbol": "ByteArrayIterator",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/spse/src/swift-babab/Sources/BABAB/ByteArray.swift",
-      "line": 235,
+      "line": 285,
       "symbol": "ByteArrayIterator.init(array:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"

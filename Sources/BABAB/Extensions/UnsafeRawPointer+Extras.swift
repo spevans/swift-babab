@@ -40,7 +40,7 @@ extension UnsafeMutableRawPointer {
     /// - parameter offset: The offset from this pointer, in bytes. The default is zero.
     /// - parameter type: The type of value.
     public func unalignedStoreBytes<T>(of value: T, toByteOffset offset: Int, as type: T.Type) {
-        var _value = value
-        memcpy(self.advanced(by: offset), &_value, MemoryLayout<T>.size)
+        var value = value
+        memcpy(self.advanced(by: offset), &value, MemoryLayout<T>.size)
     }
 }
