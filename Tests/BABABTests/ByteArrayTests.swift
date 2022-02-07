@@ -112,6 +112,10 @@ class ByteArrayTests: XCTestCase {
         XCTAssertEqual(array.description, "[2, 1, 3, 5]")
         array.insert(8, at: 4)
         XCTAssertEqual(array.description, "[2, 1, 3, 5, 8]")
+
+        array = ByteArray<UInt64>([1, 6])
+        array.insert(contentsOf: [7, 8, 9], at: 1)
+        XCTAssertEqual(array.description, "[1, 7, 8, 9, 6]")
     }
 
     func testRemove() {
@@ -211,6 +215,31 @@ class ByteArrayTests: XCTestCase {
         XCTAssertNil(baIterator.next())
     }
 
+
+
+    func testRangeReplaceable() {
+        typealias TestType = ByteArray<UInt64>
+        var array = ByteArray<UInt64>([1, 2, 3, 4, 5, 6])
+
+        XCTAssertEqual(array[0...1].description, "[1, 2]")
+        XCTAssertEqual(array[array.startIndex..<array.endIndex].description, "[1, 2, 3, 4, 5, 6]")
+        XCTAssertEqual(array[..<3].description, "[1, 2, 3]")
+        XCTAssertEqual(array[2...].description, "[3, 4, 5, 6]")
+        XCTAssertEqual(array[..<0].description, "[]")
+
+        array[1...4] = TestType([0])
+        XCTAssertEqual(array, TestType([1, 0, 6]))
+
+        array[1...1] = TestType([7, 8, 9])
+        XCTAssertEqual(array, TestType([1, 7, 8, 9, 6]))
+
+        array[..<0] = TestType([2, 3])
+        XCTAssertEqual(array, TestType([2, 3, 1, 7, 8, 9, 6]))
+
+        array[...] = TestType()
+        XCTAssertEqual(array, TestType())
+    }
+
     static var allTests = [
         ("testInit", testInit),
         ("testCapacity", testCapacity),
@@ -220,5 +249,6 @@ class ByteArrayTests: XCTestCase {
         ("testRemove", testRemove),
         ("testPop", testPop),
         ("testSequence", testSequence),
+        ("testRangeReplaceable", testRangeReplaceable)
     ]
 }

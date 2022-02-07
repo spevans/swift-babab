@@ -8,15 +8,33 @@
 //  ByteArray<x> types. Treat UInt8/UInt16/UInt32/UInt64 as arrays of bytes.
 //
 
-public struct ByteArray<T: FixedWidthInteger & UnsignedInteger>: RandomAccessCollection, MutableCollection,
-                                                                 RangeReplaceableCollection, BidirectionalCollection {
+public struct ByteArray<T: FixedWidthInteger & UnsignedInteger> {
+    fileprivate(set) public var rawValue: T
+    public var capacity: Int { (T.bitWidth / 8) - 1 }
 
-    public typealias Index = Int
+    /// Creates a new, empty array. All the elements are set to zero.
+    @inline(__always)
+    public init() {
+        rawValue = 0
+    }
+
+    @inline(__always)
+    public init(rawValue: T) {
+        self.rawValue = rawValue
+    }
+}
+
+extension ByteArray: Sequence {
+    public typealias Iterator = ByteArrayIterator<T>
     public typealias Element = UInt8
-    public typealias SubSequence = Self
 
-    private(set) public var rawValue: T
-    var maxElements: Int { Int(T.bitWidth / 8) - 1 }
+    public func makeIterator() -> ByteArrayIterator<T> {
+        return ByteArrayIterator(array: self)
+    }
+}
+
+extension ByteArray: MutableCollection {
+    public typealias Index = Int
 
     /// The position of the first element in a nonempty array. Always zero.
     public var startIndex: Index { 0 }
@@ -25,81 +43,10 @@ public struct ByteArray<T: FixedWidthInteger & UnsignedInteger>: RandomAccessCol
     public var endIndex: Index { Int(rawValue & 0xff) }
     /// The number of elements in the array. This is fixed at the `bitWidth` of the underlying storage.
     public var count: Int { Int(rawValue & 0xff) }
-    public var capacity: Int { (T.bitWidth / 8) - 1 }
-    /// Returns the position immediately before the given index.
-    public func index(before index: Index) -> Index {
-        return index - 1
-    }
+
     /// Replaces the given index with its successor.
     public func index(after index: Index) -> Index {
         return index + 1
-    }
-
-    static public func == (lhs: Self<T>, rhs: Self<T>) -> Bool { lhs.rawValue == rhs.rawValue }
-    static public func != (lhs: Self<T>, rhs: Self<T>) -> Bool { lhs.rawValue != rhs.rawValue }
-
-    /// Creates a new, empty array. All the elements are set to zero.
-    public init() {
-        rawValue = 0
-    }
-
-    public init<S: Sequence>(_ sequence: __owned S) where S.Element == Element {
-        let maxElements = Int(T.bitWidth / 8) - 1
-        var elementCount = 0
-        var value = sequence.reduce(into: T(0), {
-            elementCount += 1
-            guard elementCount <= maxElements else { fatalError("Sequence contains too many elements") }
-            $0 |= T($1) << (elementCount * 8)
-        })
-        value |= T(elementCount)
-        rawValue = value
-    }
-
-    @inline(__always)
-    public init(rawValue: T) {
-        self.rawValue = rawValue
-    }
-
-    public init(repeating: Element, count: Int) {
-        let maxElements = Int(T.bitWidth / 8) - 1
-        precondition(0...maxElements ~= count)
-        var value = T(0)
-        for _ in 0..<count {
-            value |= T(repeating)
-            value <<= Element.bitWidth
-        }
-        value |= T(count)
-        rawValue = value
-    }
-
-    mutating public func append(_ newElement: Element) {
-        precondition(count < maxElements)
-        let index = count
-        incrementCount()
-        self[index] = newElement
-    }
-
-    mutating public func popFirst() -> Element? {
-        guard count > 0 else { return nil }
-        let newCount = count - 1
-        rawValue >>= 8
-        let element = UInt8(truncatingIfNeeded: rawValue)
-        maskDataBits(newCount: newCount)
-        return element
-    }
-
-    mutating public func popLast() -> Element? {
-        guard count > 0 else { return nil }
-        let newCount = count - 1
-        let element = self[newCount]
-        maskDataBits(newCount: newCount)
-        return element
-    }
-
-    mutating public func reserveCapacity(_ capacity: Int) {
-        guard capacity <= self.capacity else {
-            fatalError("\(capacity) exceeds maximum capacity of ByteArray of \(self.capacity) elements")
-        }
     }
 
     /// Accesses the element at the specified position.
@@ -123,6 +70,142 @@ public struct ByteArray<T: FixedWidthInteger & UnsignedInteger>: RandomAccessCol
             let shift = T((index + 1) * 8)
             rawValue |= (T(0xff) << shift)
             rawValue ^= T(~newValue) << shift
+        }
+    }
+
+    mutating public func popFirst() -> Element? {
+        guard count > 0 else { return nil }
+        let newCount = count - 1
+        rawValue >>= 8
+        let element = UInt8(truncatingIfNeeded: rawValue)
+        maskDataBits(newCount: newCount)
+        return element
+    }
+
+    // Mask off the data bits, excluding the count bits with get set to 0, then set the
+    // count to the new value.
+    mutating fileprivate func maskDataBits(newCount: Int) {
+        let mask = (rawValue.maskFrom(bitCount: newCount * 8) << 8)
+        rawValue &= mask
+        rawValue |= T(newCount)
+    }
+
+    mutating fileprivate func incrementCount() {
+        rawValue += 1
+    }
+}
+
+extension ByteArray: BidirectionalCollection {
+    /// Returns the position immediately before the given index.
+    public func index(before index: Index) -> Index {
+        return index - 1
+    }
+
+    mutating public func popLast() -> Element? {
+        guard count > 0 else { return nil }
+        let newCount = count - 1
+        let element = self[newCount]
+        maskDataBits(newCount: newCount)
+        return element
+    }
+}
+
+extension ByteArray: RandomAccessCollection {
+
+}
+
+extension ByteArray: RangeReplaceableCollection {
+    public typealias SubSequence = Self
+
+    public init<S: Sequence>(_ sequence: __owned S) where S.Element == Element {
+        var elementCount = 0
+        rawValue = 0
+        var value = sequence.reduce(into: T(0), {
+            elementCount += 1
+            guard elementCount <= capacity else { fatalError("Sequence contains too many elements") }
+            $0 |= T($1) << (elementCount * 8)
+        })
+        value |= T(elementCount)
+        rawValue = value
+    }
+
+    public init(repeating: Element, count: Int) {
+        rawValue = 0
+        precondition(count <= capacity)
+        var value = T(0)
+        for _ in 0..<count {
+            value |= T(repeating)
+            value <<= Element.bitWidth
+        }
+        value |= T(count)
+        rawValue = value
+    }
+
+    mutating public func reserveCapacity(_ capacity: Int) {
+        guard capacity <= self.capacity else {
+            fatalError("\(capacity) exceeds maximum capacity of ByteArray of \(self.capacity) elements")
+        }
+    }
+
+    public mutating func replaceSubrange<C>(_ subrange: Range<Index>, with newElements: C)
+        where C: Collection, C.Element == Element {
+            let newCount = self.count + newElements.count - subrange.count
+            precondition(newCount <= self.capacity)
+
+            for _ in 0..<subrange.count {
+                self.remove(at: subrange.lowerBound)
+            }
+            insert(contentsOf: newElements, at: subrange.lowerBound)
+    }
+
+    public subscript(bounds: Range<Index>) -> ByteArray<T> {
+        get {
+            precondition(bounds.startIndex >= self.startIndex)
+            precondition(bounds.endIndex <= self.endIndex)
+
+            let newCount = bounds.count
+            let mask = (rawValue.maskFrom(bitCount: newCount * 8) << 8)
+            var result = rawValue >> (bounds.startIndex * 8)
+            result &= mask
+            result |= T(newCount)
+
+            return ByteArray<T>(rawValue: result)
+        }
+
+        set {
+            replaceSubrange(bounds, with: newValue)
+        }
+    }
+
+    mutating public func append(_ newElement: Element) {
+        precondition(count < capacity)
+        let index = count
+        incrementCount()
+        self[index] = newElement
+    }
+
+    mutating public func insert(_ newElement: Element, at index: Int) {
+        precondition(index >= 0, "Index of element to add should be non-negative")
+        precondition(index <= endIndex, "Array index is out of range")
+        precondition(count < capacity, "Can't insert any more elements")
+
+        let shift = T(index + 1) * 8
+
+        let upperMask = (T.max << shift)
+        let lowerMask = ~upperMask
+
+        let lowerBits = rawValue & lowerMask
+        let upperBits = ((rawValue & upperMask) << 8)
+
+        rawValue = lowerBits | (T(newElement) << shift) | upperBits
+        incrementCount()
+    }
+
+    mutating public func insert<S>(contentsOf newElements: S, at i: Index) where S : Collection, UInt8 == S.Element {
+        var index = i
+        for element in newElements {
+            self.insert(element, at: index)
+            index = self.index(after: index)
         }
     }
 
@@ -162,23 +245,6 @@ public struct ByteArray<T: FixedWidthInteger & UnsignedInteger>: RandomAccessCol
         maskDataBits(newCount: count - elements)
     }
 
-    mutating public func insert(_ newElement: Element, at index: Int) {
-        precondition(index >= 0, "Index of element to add should be non-negative")
-        precondition(index <= endIndex, "Array index is out of range")
-        precondition(count < maxElements, "Can't insert any more elements")
-
-        let shift = T(index + 1) * 8
-
-        let upperMask = (T.max << shift)
-        let lowerMask = ~upperMask
-
-        let lowerBits = rawValue & lowerMask
-        let upperBits = ((rawValue & upperMask) << 8)
-
-        rawValue = lowerBits | (T(newElement) << shift) | upperBits
-        incrementCount()
-    }
-
     @discardableResult
     mutating public func remove(at index: Int) -> Element {
         precondition(index >= 0, "Index of element to remove should be non-negative")
@@ -196,18 +262,10 @@ public struct ByteArray<T: FixedWidthInteger & UnsignedInteger>: RandomAccessCol
         rawValue -= 1
         return element
     }
+}
 
-    // Mask off the data bits, excluding the count bits with get set to 0, then set the
-    // count to the new value.
-    mutating private func maskDataBits(newCount: Int) {
-        let mask = (rawValue.maskFrom(bitCount: newCount * 8) << 8)
-        rawValue &= mask
-        rawValue |= T(newCount)
-    }
-
-    mutating private func incrementCount() {
-        rawValue += 1
-    }
+extension ByteArray: Equatable {
+    static public func == (lhs: ByteArray<T>, rhs: ByteArray<T>) -> Bool { lhs.rawValue == rhs.rawValue }
 }
 
 extension ByteArray: CustomStringConvertible {
@@ -218,14 +276,6 @@ extension ByteArray: CustomStringConvertible {
 
 extension ByteArray: CustomDebugStringConvertible {
     public var debugDescription: String { rawValue.hex(separators: true) }
-}
-
-extension ByteArray: Sequence {
-    // public typealias Iterator = ByteArrayIterator
-
-    public func makeIterator() -> ByteArrayIterator<T> {
-        return ByteArrayIterator(array: self)
-    }
 }
 
 public struct ByteArrayIterator<T: FixedWidthInteger & UnsignedInteger>: IteratorProtocol {
