@@ -201,8 +201,8 @@ extension ByteArray: RangeReplaceableCollection {
         incrementCount()
     }
 
-    mutating public func insert<S>(contentsOf newElements: S, at i: Index) where S : Collection, UInt8 == S.Element {
-        var index = i
+    mutating public func insert<S>(contentsOf newElements: S, at idx: Index) where S: Collection, UInt8 == S.Element {
+        var index = idx
         for element in newElements {
             self.insert(element, at: index)
             index = self.index(after: index)

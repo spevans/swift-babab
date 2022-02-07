@@ -67,8 +67,10 @@ class BinaryIntegerExtrasTests: XCTestCase {
         XCTAssertEqual(UInt16.max.binary(separators: true), "1111_1111_1111_1111")
         XCTAssertEqual(UInt32.min.binary(separators: true), "0000_0000_0000_0000_0000_0000_0000_0000")
         XCTAssertEqual(UInt32.max.binary(separators: true), "1111_1111_1111_1111_1111_1111_1111_1111")
-        XCTAssertEqual(UInt64.min.binary(separators: true), "0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000")
-        XCTAssertEqual(UInt64.max.binary(separators: true), "1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111")
+        XCTAssertEqual(UInt64.min.binary(separators: true),
+                       "0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000")
+        XCTAssertEqual(UInt64.max.binary(separators: true),
+                       "1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111")
     }
 
     static var allTests = [

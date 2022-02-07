@@ -11,43 +11,43 @@ import XCTest
 final class BitArrayTests: XCTestCase {
 
     func testBitArray() {
-        var ba = BitArray8()
-        XCTAssertEqual(ba.startIndex, 0)
-        XCTAssertEqual(ba.endIndex, 8)
-        XCTAssertEqual(ba.count, 8)
+        var bitArray = BitArray8()
+        XCTAssertEqual(bitArray.startIndex, 0)
+        XCTAssertEqual(bitArray.endIndex, 8)
+        XCTAssertEqual(bitArray.count, 8)
 
-        ba = BitArray(0)
-        XCTAssertFalse(ba[0])
-        XCTAssertFalse(ba[7])
-        XCTAssertEqual(ba.rawValue, 0)
-        XCTAssertEqual(ba.description, "0000_0000")
+        bitArray = BitArray(0)
+        XCTAssertFalse(bitArray[0])
+        XCTAssertFalse(bitArray[7])
+        XCTAssertEqual(bitArray.rawValue, 0)
+        XCTAssertEqual(bitArray.description, "0000_0000")
 
-        ba[0] = true
-        ba[7] = ba[0]
-        XCTAssertTrue(ba[0])
-        XCTAssertTrue(ba[7])
-        XCTAssertEqual(ba.rawValue, 129)
-        XCTAssertEqual("\(ba)", "1000_0001")
+        bitArray[0] = true
+        bitArray[7] = bitArray[0]
+        XCTAssertTrue(bitArray[0])
+        XCTAssertTrue(bitArray[7])
+        XCTAssertEqual(bitArray.rawValue, 129)
+        XCTAssertEqual("\(bitArray)", "1000_0001")
 
-        ba = BitArray8(UInt8(0))
+        bitArray = BitArray8(UInt8(0))
         var flag = false
-        for (idx, _) in ba.enumerated() {
-            ba[idx] = flag
+        for idx in bitArray.indices {
+            bitArray[idx] = flag
             flag.toggle()
         }
 
-        XCTAssertEqual(ba.rawValue, 0xAA)
-        for (idx, element) in ba.enumerated() {
-            ba[idx] = !element
+        XCTAssertEqual(bitArray.rawValue, 0xAA)
+        for (idx, element) in bitArray.enumerated() {
+            bitArray[idx] = !element
         }
-        XCTAssertEqual(ba.rawValue, 0x55)
-        ba[0...3] = 0
-        XCTAssertEqual(ba.rawValue, 0x50)
-        ba[4...7] = ~(ba[4...7])
-        XCTAssertEqual(ba.rawValue, 0xA0)
-        ba[0...3] = ba[4...7]
-        XCTAssertEqual(ba.rawValue, 0xAA)
-        XCTAssertEqual("\(ba)", "1010_1010")
+        XCTAssertEqual(bitArray.rawValue, 0x55)
+        bitArray[0...3] = 0
+        XCTAssertEqual(bitArray.rawValue, 0x50)
+        bitArray[4...7] = ~(bitArray[4...7])
+        XCTAssertEqual(bitArray.rawValue, 0xA0)
+        bitArray[0...3] = bitArray[4...7]
+        XCTAssertEqual(bitArray.rawValue, 0xAA)
+        XCTAssertEqual("\(bitArray)", "1010_1010")
     }
 
     func testSubSequence() {

@@ -216,7 +216,6 @@ class ByteArrayTests: XCTestCase {
     }
 
 
-
     func testRangeReplaceable() {
         typealias TestType = ByteArray<UInt64>
         var array = ByteArray<UInt64>([1, 2, 3, 4, 5, 6])

@@ -1,0 +1,13 @@
+vertical_whitespace:
+  max_empty_lines: 2
+
+disabled_rules:
+  - trailing_comma
+
+
+file_length:
+  - 1000
+  - 1300
+
+switch_case_alignment:
+  indented_cases: true
