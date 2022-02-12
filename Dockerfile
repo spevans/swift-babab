@@ -5,5 +5,4 @@ RUN export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true && ap
 
 COPY . /root/
 WORKDIR /root
-RUN echo "$CACHEBUST2"
 RUN swift test 
