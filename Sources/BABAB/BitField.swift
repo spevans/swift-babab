@@ -1,21 +1,45 @@
 //
-// BitArray.swift
+// BitField.swift
 // BABAB
 //
 // Created by Simon Evans on 28/03/2017.
-// Copyright © 2017 - 2021 Simon Evans. All rights reserved.
+// Copyright © 2017 - 2022 Simon Evans. All rights reserved.
 //
-// BitArray<x> types. Treat UInt8/UInt16/UInt32/UInt64 as arrays of bits.
+// BitField<x> types. Treat UInt8/UInt16/UInt32/UInt64 as a field of bits.
 //
 
 /// A `BitArray` with 8 elements.
-public typealias BitArray8 = BitArray<UInt8>
+@available(*, unavailable, renamed: "BitField8")
+public typealias BitArray8 = BitField<UInt8>
+
 /// A `BitArray` with 16 elements.
-public typealias BitArray16 = BitArray<UInt16>
+@available(*, unavailable, renamed: "BitField16")
+public typealias BitArray16 = BitField<UInt16>
+
 /// A `BitArray` with 32 elements.
-public typealias BitArray32 = BitArray<UInt32>
+@available(*, unavailable, renamed: "BitField32")
+public typealias BitArray32 = BitField<UInt32>
+
 /// A `BitArray` with 64 elements.
-public typealias BitArray64 = BitArray<UInt64>
+@available(*, unavailable, renamed: "BitField64")
+public typealias BitArray64 = BitField<UInt64>
+
+@available(*, unavailable, renamed: "BitField")
+public typealias BitArray<T> = BitField<T> where T: FixedWidthInteger & UnsignedInteger
+
+/// A `BitField` with 8 elements.
+public typealias BitField8 = BitField<UInt8>
+
+/// A `BitField` with 16 elements.
+public typealias BitField16 = BitField<UInt16>
+
+/// A `BitField` with 32 elements.
+public typealias BitField32 = BitField<UInt32>
+
+/// A `BitField` with 64 elements.
+public typealias BitField64 = BitField<UInt64>
+
+
 
 /// A type that uses a fixed width, unsigned integer as storage for an array of bits. The number of bits is fixed and by
 /// default are set to zero.
@@ -29,7 +53,7 @@ public typealias BitArray64 = BitArray<UInt64>
 /// +---------+---------+-------+-------+
 ///
 /// struct Data {
-///     private var bits: BitArray8
+///     private var bits: BitField8
 ///
 ///     var flag1: Bool {
 ///         get { bits[0] }
@@ -45,9 +69,9 @@ public typealias BitArray64 = BitArray<UInt64>
 ///     }
 /// }
 /// ```
-public struct BitArray<T: FixedWidthInteger & UnsignedInteger>: RandomAccessCollection, MutableCollection,
+public struct BitField<T: FixedWidthInteger & UnsignedInteger>: RandomAccessCollection, MutableCollection,
     CustomStringConvertible {
-    /// The `Index` type for a `BitArray` is an `Int`.
+    /// The `Index` type for a `BitField` is an `Int`.
     public typealias Index = Int
     /// The `Element` type for a `BitArry` is a `Bool` of value `true` or `false`.
     public typealias Element = Bool
@@ -122,7 +146,7 @@ public struct BitArray<T: FixedWidthInteger & UnsignedInteger>: RandomAccessColl
     /// in the lowest bits of the returned array.
     /// If the original array
     ///
-    /// let a = BitArray16(0x0A50) // 0000101001010000
+    /// let a = BitField16(0x0A50) // 0000101001010000
     /// let b = a[8..<16]          // 0000000000001010
     ///
     /// ```
@@ -159,7 +183,7 @@ public struct BitArray<T: FixedWidthInteger & UnsignedInteger>: RandomAccessColl
     /// ```
     /// The result is the integer value of the selected elements (bits) of the array.
     ///
-    /// let a = BitArray16(0x0A50) // 0000101001010000
+    /// let a = BitField16(0x0A50) // 0000101001010000
     /// let b = a[8..<16]          // b = 0xA
     /// print(b)                   // 10
     /// ```
