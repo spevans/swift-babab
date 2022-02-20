@@ -1,0 +1,13 @@
+name: TestLinux
+on: [push]
+jobs:
+  build:
+    name: Swift Linux ${{matrix.swift}}
+    strategy:
+      matrix:
+        swift: ["5.2", "5.3", "5.4", "5.5", "latest"]
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Run tests
+      run: docker run --rm -v `pwd`:/babab/${{matrix.swift}} -w /babab/${{matrix.swift}} -t swift:${{matrix.swift}} swift test
