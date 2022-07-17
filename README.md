@@ -5,11 +5,12 @@
 
 Buffers, Arrays, Bits and Bytes.
 
-Miscellaneous types and functions for manipulatin bits and bytes, small arrays of bytes utilising `FixedWidthInteger` for non-heap storage and other random things.
+Miscellaneous types and functions for manipulatin bits and bytes, small arrays of bytes utilising `FixedWidthInteger`
+for non-heap storage and other random things.
 
 [API Documentation](https://spevans.github.io/swift-babab)
 
-[BitArray](https://spevans.github.io/swift-babab/Structs/BitArray.html)
+[BitField](https://spevans.github.io/swift-babab/Structs/BitField.html)
 
 [BitmapAllocator](https://spevans.github.io/swift-babab/Structs/BitmapAllocator.html)
 
